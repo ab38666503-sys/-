@@ -2,25 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>TOOLPICK</title>
 
 <style>
 *{
     box-sizing:border-box;
     margin:0;
-    padding:0;
+    padding:0
 }
 
 :root{
     --bg:#08090b;
     --panel:#101216;
-    --panel2:#15171c;
-    --panel3:#1b1e24;
     --border:#242832;
     --text:#f5f7fa;
-    --sub:#8d949f;
-    --accent:#ffffff;
+    --sub:#8d949f
 }
 
 body{
@@ -28,7 +25,7 @@ body{
     background:var(--bg);
     color:var(--text);
     min-height:100vh;
-    overflow-x:hidden;
+    overflow-x:hidden
 }
 
 /* ================= SIDEBAR ================= */
@@ -45,7 +42,7 @@ body{
     flex-direction:column;
     align-items:center;
     padding:18px 0;
-    z-index:1000;
+    z-index:1000
 }
 
 .logo{
@@ -54,14 +51,13 @@ body{
     border-radius:12px;
     background:#000;
     color:#fff;
-    border:2px solid #fff;
+    border:1px solid #fff;
     display:flex;
     align-items:center;
     justify-content:center;
     font-weight:900;
     font-size:20px;
-    margin-bottom:24px;
-    box-shadow:none;
+    margin-bottom:24px
 }
 
 .side-menu{
@@ -69,7 +65,7 @@ body{
     flex-direction:column;
     gap:9px;
     width:100%;
-    align-items:center;
+    align-items:center
 }
 
 .side-btn{
@@ -84,7 +80,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    transition:.2s;
+    transition:.2s
 }
 
 .side-btn svg{
@@ -92,17 +88,13 @@ body{
     height:22px;
     stroke:currentColor;
     fill:none;
-    stroke-width:1.8;
+    stroke-width:1.8
 }
 
-.side-btn:hover{
-    color:#fff;
-    background:#1a1a1a;
-}
-
+.side-btn:hover,
 .side-btn.active{
     color:#fff;
-    background:#1a1a1a;
+    background:#1a1a1a
 }
 
 .side-btn::after{
@@ -112,7 +104,7 @@ body{
     top:50%;
     transform:translateY(-50%);
     background:#20232a;
-    color:white;
+    color:#fff;
     font-size:12px;
     white-space:nowrap;
     padding:7px 10px;
@@ -121,11 +113,11 @@ body{
     pointer-events:none;
     transition:.15s;
     border:1px solid #30343c;
-    z-index:2000;
+    z-index:2000
 }
 
 .side-btn:hover::after{
-    opacity:1;
+    opacity:1
 }
 
 /* ================= MAIN ================= */
@@ -133,72 +125,68 @@ body{
 .main{
     margin-left:78px;
     min-height:100vh;
-    padding:38px;
+    padding:38px
 }
 
 .page{
     display:none;
-    animation:pageIn .25s ease;
+    animation:pageIn .25s ease
 }
 
 .page.active{
-    display:block;
+    display:block
 }
 
 @keyframes pageIn{
     from{
         opacity:0;
-        transform:translateY(7px);
+        transform:translateY(7px)
     }
+
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0)
     }
 }
 
 .header{
-    margin-bottom:30px;
+    margin-bottom:30px
 }
 
 .header h1{
     font-size:32px;
-    letter-spacing:-1px;
+    letter-spacing:-1px
 }
 
 .header p{
     color:var(--sub);
-    margin-top:8px;
+    margin-top:8px
 }
 
 /* ================= HOME ================= */
 
-.home-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:20px;
-}
-
 .tools-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+    gap:16px
 }
 
 .tool-card{
-    background:linear-gradient(145deg,#111318,#0e1013);
+    background:
+        linear-gradient(145deg,#111318,#0e1013);
     border:1px solid var(--border);
     border-radius:18px;
     padding:24px;
     min-height:170px;
     cursor:pointer;
-    transition:.25s;
+    transition:.25s
 }
 
 .tool-card:hover{
     transform:translateY(-4px);
     border-color:#3a3f49;
-    background:#15171c;
+    background:#15171c
 }
 
 .tool-icon{
@@ -209,25 +197,25 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-bottom:20px;
+    margin-bottom:20px
 }
 
 .tool-icon svg{
     width:22px;
     height:22px;
-    stroke:white;
+    stroke:#fff;
     fill:none;
-    stroke-width:1.8;
+    stroke-width:1.8
 }
 
 .tool-card h3{
     font-size:17px;
-    margin-bottom:7px;
+    margin-bottom:7px
 }
 
 .tool-card p{
     color:#858c97;
-    font-size:13px;
+    font-size:13px
 }
 
 /* ================= COMMON ================= */
@@ -236,7 +224,7 @@ body{
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:18px;
-    padding:25px;
+    padding:25px
 }
 
 textarea,
@@ -244,23 +232,22 @@ input,
 select{
     width:100%;
     background:#0b0d10;
-    color:white;
+    color:#fff;
     border:1px solid #292d35;
     outline:none;
     border-radius:11px;
     padding:12px;
-    font-size:14px;
+    font-size:14px
 }
 
 textarea{
     min-height:130px;
-    resize:vertical;
+    resize:vertical
 }
 
 input:focus,
-textarea:focus,
-select:focus{
-    border-color:#555b66;
+textarea:focus{
+    border-color:#555b66
 }
 
 button.primary{
@@ -271,12 +258,12 @@ button.primary{
     border-radius:10px;
     font-weight:bold;
     cursor:pointer;
-    transition:.2s;
+    transition:.2s
 }
 
 button.primary:hover{
-    background:white;
-    transform:translateY(-1px);
+    background:#fff;
+    transform:translateY(-1px)
 }
 
 button.secondary{
@@ -285,17 +272,17 @@ button.secondary{
     color:#ddd;
     padding:11px 17px;
     border-radius:10px;
-    cursor:pointer;
+    cursor:pointer
 }
 
 .row{
     display:flex;
     gap:10px;
-    flex-wrap:wrap;
+    flex-wrap:wrap
 }
 
 .mt{
-    margin-top:16px;
+    margin-top:16px
 }
 
 /* ================= ROULETTE ================= */
@@ -303,21 +290,20 @@ button.secondary{
 .roulette-layout{
     display:grid;
     grid-template-columns:330px 1fr;
-    gap:25px;
+    gap:25px
 }
 
 .roulette-wheel-area{
     display:flex;
     align-items:center;
     justify-content:center;
-    min-height:420px;
-    position:relative;
+    min-height:420px
 }
 
 .wheel-wrap{
     position:relative;
     width:310px;
-    height:310px;
+    height:310px
 }
 
 .wheel{
@@ -330,7 +316,9 @@ button.secondary{
     box-shadow:
         0 0 0 2px #0a0b0d,
         0 20px 60px rgba(0,0,0,.5);
-    transition:transform 5.2s cubic-bezier(.12,.78,.15,1);
+    transition:
+        transform 5.2s
+        cubic-bezier(.12,.78,.15,1)
 }
 
 .wheel::after{
@@ -338,22 +326,36 @@ button.secondary{
     position:absolute;
     inset:0;
     border-radius:50%;
-    box-shadow:inset 0 0 35px rgba(0,0,0,.5);
-    pointer-events:none;
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,.5);
+    pointer-events:none
 }
+
+/*
+   룰렛 이름
+   각 칸의 중앙에 표시되며
+   글자는 항상 똑바로 보임
+*/
 
 .wheel-label{
     position:absolute;
     left:50%;
     top:50%;
     width:90px;
-    text-align:center;
-    transform-origin:0 0;
-    color:white;
+    height:30px;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
     font-size:13px;
     font-weight:bold;
+    text-align:center;
+    white-space:nowrap;
     pointer-events:none;
-    text-shadow:0 1px 3px black;
+    text-shadow:
+        0 1px 4px rgba(0,0,0,.9);
+    z-index:3
 }
 
 .pointer{
@@ -366,8 +368,11 @@ button.secondary{
     height:0;
     border-left:13px solid transparent;
     border-right:13px solid transparent;
-    border-top:30px solid white;
-    filter:drop-shadow(0 3px 5px rgba(0,0,0,.5));
+    border-top:30px solid #fff;
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,.5)
+        )
 }
 
 .wheel-center{
@@ -385,7 +390,7 @@ button.secondary{
     align-items:center;
     justify-content:center;
     font-size:11px;
-    font-weight:bold;
+    font-weight:bold
 }
 
 .result-box{
@@ -393,33 +398,34 @@ button.secondary{
     text-align:center;
     min-height:35px;
     color:#cfd4dc;
-    font-size:15px;
+    font-size:15px
 }
 
 /* ================= TEAM ================= */
 
 .team-result{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
     gap:14px;
-    margin-top:20px;
+    margin-top:20px
 }
 
 .team-card{
     background:#15171c;
     border:1px solid #292d35;
     border-radius:14px;
-    padding:18px;
+    padding:18px
 }
 
 .team-card h3{
-    margin-bottom:12px;
+    margin-bottom:12px
 }
 
 .team-member{
     color:#aeb4bd;
     font-size:13px;
-    padding:5px 0;
+    padding:5px 0
 }
 
 /* ================= TIMER ================= */
@@ -429,7 +435,7 @@ button.secondary{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    min-height:570px;
+    min-height:570px
 }
 
 .timer-circle{
@@ -437,14 +443,21 @@ button.secondary{
     height:330px;
     border-radius:50%;
     background:
-        radial-gradient(circle at center,#0c0e11 62%,transparent 63%),
-        conic-gradient(#f1f1f1 var(--progress),#262a31 0);
+        radial-gradient(
+            circle at center,
+            #0c0e11 62%,
+            transparent 63%
+        ),
+        conic-gradient(
+            #f1f1f1 var(--progress),
+            #262a31 0
+        );
     display:flex;
     align-items:center;
     justify-content:center;
     box-shadow:
         0 0 60px rgba(255,255,255,.04),
-        inset 0 0 30px rgba(0,0,0,.6);
+        inset 0 0 30px rgba(0,0,0,.6)
 }
 
 .timer-inner{
@@ -455,25 +468,25 @@ button.secondary{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:center
 }
 
 .timer-display{
     font-family:monospace;
     font-size:55px;
-    letter-spacing:3px;
+    letter-spacing:3px
 }
 
 .timer-status{
     color:#7e8692;
     margin-top:9px;
-    font-size:13px;
+    font-size:13px
 }
 
 .timer-controls{
     display:flex;
     gap:10px;
-    margin-top:30px;
+    margin-top:30px
 }
 
 /* ================= RESPONSIVE ================= */
@@ -481,47 +494,47 @@ button.secondary{
 @media(max-width:800px){
 
     .sidebar{
-        width:64px;
+        width:64px
     }
 
     .logo{
         width:38px;
         height:38px;
-        font-size:16px;
+        font-size:16px
     }
 
     .side-btn{
         width:42px;
-        height:42px;
+        height:42px
     }
 
     .main{
         margin-left:64px;
-        padding:22px 16px;
+        padding:22px 16px
     }
 
     .roulette-layout{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr
     }
 
     .wheel-wrap,
     .wheel{
         width:280px;
-        height:280px;
+        height:280px
     }
 
     .timer-circle{
         width:280px;
-        height:280px;
+        height:280px
     }
 
     .timer-inner{
         width:240px;
-        height:240px;
+        height:240px
     }
 
     .timer-display{
-        font-size:42px;
+        font-size:42px
     }
 }
 </style>
@@ -537,31 +550,42 @@ button.secondary{
 
     <div class="side-menu">
 
-        <button class="side-btn active"
-                data-tooltip="홈"
-                onclick="openPage('home',this)">
+        <!-- 홈 -->
+
+        <button
+            class="side-btn active"
+            data-tooltip="홈"
+            onclick="openPage('home',this)"
+        >
             <svg viewBox="0 0 24 24">
                 <path d="M3 11.5 12 4l9 7.5"/>
                 <path d="M5 10v10h14V10"/>
             </svg>
         </button>
 
-        <button class="side-btn"
-                data-tooltip="룰렛"
-                onclick="openPage('roulette',this)">
+        <!-- 룰렛 -->
+
+        <button
+            class="side-btn"
+            data-tooltip="룰렛"
+            onclick="openPage('roulette',this)"
+        >
             <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="8.5"/>
                 <circle cx="12" cy="12" r="2"/>
                 <path d="M12 3.5v6"/>
                 <path d="m18 6-4.2 4.2"/>
                 <path d="M20.5 12h-6"/>
-                <path d="m18 18-4.2-4.2"/>
             </svg>
         </button>
 
-        <button class="side-btn"
-                data-tooltip="팀 나누기"
-                onclick="openPage('team',this)">
+        <!-- 팀 나누기 -->
+
+        <button
+            class="side-btn"
+            data-tooltip="팀 나누기"
+            onclick="openPage('team',this)"
+        >
             <svg viewBox="0 0 24 24">
                 <circle cx="9" cy="8" r="3"/>
                 <circle cx="17" cy="9" r="2.5"/>
@@ -570,9 +594,13 @@ button.secondary{
             </svg>
         </button>
 
-        <button class="side-btn"
-                data-tooltip="타이머"
-                onclick="openPage('timer',this)">
+        <!-- 타이머 -->
+
+        <button
+            class="side-btn"
+            data-tooltip="타이머"
+            onclick="openPage('timer',this)"
+        >
             <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="13" r="7.5"/>
                 <path d="M12 13V9"/>
@@ -592,61 +620,132 @@ button.secondary{
 
 <section id="home" class="page active">
 
-    <div class="home-top">
+    <div class="header">
 
-        <div class="header">
-            <h1>TOOLPICK</h1>
-            <p>필요한 도구를 한곳에서 간단하게.</p>
-        </div>
+        <h1>TOOLPICK</h1>
+
+        <p>
+            필요한 도구를 한곳에서 간단하게.
+        </p>
 
     </div>
 
     <div class="tools-grid">
 
-        <div class="tool-card" onclick="openPage('roulette')">
+        <!-- 룰렛 -->
+
+        <div
+            class="tool-card"
+            onclick="openPage('roulette')"
+        >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8.5"/>
-                    <circle cx="12" cy="12" r="2"/>
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="8.5"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="2"
+                    />
+
                     <path d="M12 3.5v6"/>
-                    <path d="m18 6-4.2 4.2"/>
-                    <path d="M20.5 12h-6"/>
+
+                    <path
+                        d="m18 6-4.2 4.2"
+                    />
+
+                    <path
+                        d="M20.5 12h-6"
+                    />
+
                 </svg>
+
             </div>
 
             <h3>룰렛</h3>
-            <p>랜덤으로 하나를 선택합니다.</p>
+
+            <p>
+                랜덤으로 하나를 선택합니다.
+            </p>
 
         </div>
 
-        <div class="tool-card" onclick="openPage('team')">
+        <!-- 팀 나누기 -->
+
+        <div
+            class="tool-card"
+            onclick="openPage('team')"
+        >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
-                    <circle cx="9" cy="8" r="3"/>
-                    <circle cx="17" cy="9" r="2.5"/>
-                    <path d="M3.5 19c.5-3.3 2.2-5 5.5-5s5 1.7 5.5 5"/>
+
+                    <circle
+                        cx="9"
+                        cy="8"
+                        r="3"
+                    />
+
+                    <circle
+                        cx="17"
+                        cy="9"
+                        r="2.5"
+                    />
+
+                    <path
+                        d="M3.5 19c.5-3.3 2.2-5 5.5-5s5 1.7 5.5 5"
+                    />
+
                 </svg>
+
             </div>
 
             <h3>팀 나누기</h3>
-            <p>참가자를 랜덤으로 팀에 배정합니다.</p>
+
+            <p>
+                참가자를 랜덤으로 팀에 배정합니다.
+            </p>
 
         </div>
 
-        <div class="tool-card" onclick="openPage('timer')">
+        <!-- 타이머 -->
+
+        <div
+            class="tool-card"
+            onclick="openPage('timer')"
+        >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="13" r="7.5"/>
+
+                    <circle
+                        cx="12"
+                        cy="13"
+                        r="7.5"
+                    />
+
                     <path d="M12 13V9"/>
+
                     <path d="M12 3v2"/>
+
                 </svg>
+
             </div>
 
             <h3>타이머</h3>
-            <p>깔끔한 시스템 시계 스타일 타이머.</p>
+
+            <p>
+                깔끔한 시스템 시계 스타일 타이머.
+            </p>
 
         </div>
 
@@ -659,15 +758,22 @@ button.secondary{
 <section id="roulette" class="page">
 
     <div class="header">
+
         <h1>룰렛</h1>
-        <p>참가자를 입력하고 룰렛을 돌려보세요.</p>
+
+        <p>
+            참가자를 입력하고 룰렛을 돌려보세요.
+        </p>
+
     </div>
 
     <div class="roulette-layout">
 
         <div class="panel">
 
-            <textarea id="rouletteInput">철수
+            <textarea
+                id="rouletteInput"
+            >철수
 영희
 민수
 지훈
@@ -676,13 +782,17 @@ button.secondary{
 
             <div class="row mt">
 
-                <button class="primary"
-                        onclick="spinRoulette()">
+                <button
+                    class="primary"
+                    onclick="spinRoulette()"
+                >
                     룰렛 돌리기
                 </button>
 
-                <button class="secondary"
-                        onclick="clearRoulette()">
+                <button
+                    class="secondary"
+                    onclick="clearRoulette()"
+                >
                     초기화
                 </button>
 
@@ -698,8 +808,10 @@ button.secondary{
 
                     <div class="pointer"></div>
 
-                    <div class="wheel"
-                         id="wheel"></div>
+                    <div
+                        class="wheel"
+                        id="wheel"
+                    ></div>
 
                     <div class="wheel-center">
                         SPIN
@@ -707,8 +819,10 @@ button.secondary{
 
                 </div>
 
-                <div class="result-box"
-                     id="rouletteResult">
+                <div
+                    class="result-box"
+                    id="rouletteResult"
+                >
                     결과가 여기에 표시됩니다.
                 </div>
 
@@ -725,8 +839,13 @@ button.secondary{
 <section id="team" class="page">
 
     <div class="header">
+
         <h1>팀 나누기</h1>
-        <p>참가자를 랜덤으로 팀에 배정합니다.</p>
+
+        <p>
+            참가자를 랜덤으로 팀에 배정합니다.
+        </p>
+
     </div>
 
     <div class="panel">
@@ -742,18 +861,33 @@ button.secondary{
 
         <div class="row mt">
 
-            <select id="teamCount"
-                    style="max-width:180px">
+            <select
+                id="teamCount"
+                style="max-width:180px"
+            >
 
-                <option value="2">2팀</option>
-                <option value="3">3팀</option>
-                <option value="4">4팀</option>
-                <option value="5">5팀</option>
+                <option value="2">
+                    2팀
+                </option>
+
+                <option value="3">
+                    3팀
+                </option>
+
+                <option value="4">
+                    4팀
+                </option>
+
+                <option value="5">
+                    5팀
+                </option>
 
             </select>
 
-            <button class="primary"
-                    onclick="makeTeams()">
+            <button
+                class="primary"
+                onclick="makeTeams()"
+            >
                 팀 나누기
             </button>
 
@@ -761,9 +895,10 @@ button.secondary{
 
     </div>
 
-    <div id="teamResult"
-         class="team-result">
-    </div>
+    <div
+        id="teamResult"
+        class="team-result"
+    ></div>
 
 </section>
 
@@ -772,24 +907,35 @@ button.secondary{
 <section id="timer" class="page">
 
     <div class="header">
+
         <h1>타이머</h1>
-        <p>깔끔한 시스템 시계 스타일 타이머.</p>
+
+        <p>
+            깔끔한 시스템 시계 스타일 타이머.
+        </p>
+
     </div>
 
     <div class="timer-layout">
 
-        <div class="timer-circle"
-             id="timerCircle">
+        <div
+            class="timer-circle"
+            id="timerCircle"
+        >
 
             <div class="timer-inner">
 
-                <div class="timer-display"
-                     id="timerDisplay">
+                <div
+                    class="timer-display"
+                    id="timerDisplay"
+                >
                     05:00
                 </div>
 
-                <div class="timer-status"
-                     id="timerStatus">
+                <div
+                    class="timer-status"
+                    id="timerStatus"
+                >
                     준비됨
                 </div>
 
@@ -799,37 +945,49 @@ button.secondary{
 
         <div class="timer-controls">
 
-            <button class="primary"
-                    onclick="startTimer()"
-                    id="timerStart">
+            <button
+                class="primary"
+                onclick="startTimer()"
+                id="timerStart"
+            >
                 시작
             </button>
 
-            <button class="secondary"
-                    onclick="resetTimer()">
+            <button
+                class="secondary"
+                onclick="resetTimer()"
+            >
                 초기화
             </button>
 
         </div>
 
-        <div style="display:flex;
-                    gap:8px;
-                    margin-top:20px;
-                    max-width:330px;">
+        <div
+            style="
+                display:flex;
+                gap:8px;
+                margin-top:20px;
+                max-width:330px;
+            "
+        >
 
-            <input id="timerMinutes"
-                   type="number"
-                   min="0"
-                   max="999"
-                   value="5"
-                   placeholder="분">
+            <input
+                id="timerMinutes"
+                type="number"
+                min="0"
+                max="999"
+                value="5"
+                placeholder="분"
+            >
 
-            <input id="timerSeconds"
-                   type="number"
-                   min="0"
-                   max="59"
-                   value="0"
-                   placeholder="초">
+            <input
+                id="timerSeconds"
+                type="number"
+                min="0"
+                max="59"
+                value="0"
+                placeholder="초"
+            >
 
         </div>
 
@@ -847,7 +1005,8 @@ button.secondary{
 
 function openPage(id,btn){
 
-    document.querySelectorAll(".page")
+    document
+        .querySelectorAll(".page")
         .forEach(p=>{
             p.classList.remove("active");
         });
@@ -859,7 +1018,8 @@ function openPage(id,btn){
         target.classList.add("active");
     }
 
-    document.querySelectorAll(".side-btn")
+    document
+        .querySelectorAll(".side-btn")
         .forEach(b=>{
             b.classList.remove("active");
         });
@@ -905,15 +1065,20 @@ function getAudio(){
 
     }
 
-    if(audioContext.state==="suspended"){
+    if(
+        audioContext.state===
+        "suspended"
+    ){
+
         audioContext.resume();
+
     }
 
     return audioContext;
 }
 
 
-/* 당첨 효과음 */
+/* 당첨 효과음만 */
 
 function playWin(){
 
@@ -934,10 +1099,11 @@ function playWin(){
         const gain=
             ctx.createGain();
 
-        osc.type="sine";
-
         const start=
-            ctx.currentTime+i*.12;
+            ctx.currentTime+
+            i*.12;
+
+        osc.type="sine";
 
         osc.frequency.setValueAtTime(
             freq,
@@ -960,12 +1126,19 @@ function playWin(){
         );
 
         osc.connect(gain);
-        gain.connect(ctx.destination);
+
+        gain.connect(
+            ctx.destination
+        );
 
         osc.start(start);
-        osc.stop(start+.3);
+
+        osc.stop(
+            start+.3
+        );
 
     });
+
 }
 
 
@@ -974,34 +1147,48 @@ function playWin(){
 ===================================================== */
 
 let rouletteItems=[];
+
 let rouletteRotation=0;
+
 let rouletteSpinning=false;
 
+
+/*
+   룰렛 생성
+   각 칸에 이름을 표시
+*/
 
 function buildRoulette(){
 
     const input=
-        document.getElementById(
-            "rouletteInput"
-        ).value;
+        document
+            .getElementById(
+                "rouletteInput"
+            )
+            .value;
 
     rouletteItems=
         input
-        .split("\n")
-        .map(x=>x.trim())
-        .filter(Boolean);
+            .split("\n")
+            .map(x=>x.trim())
+            .filter(Boolean);
 
     const wheel=
-        document.getElementById("wheel");
+        document.getElementById(
+            "wheel"
+        );
 
     wheel.innerHTML="";
 
-    if(rouletteItems.length===0){
+    if(
+        rouletteItems.length===0
+    ){
 
         wheel.style.background=
             "#202329";
 
         return;
+
     }
 
     const count=
@@ -1021,7 +1208,11 @@ function buildRoulette(){
 
     let gradient=[];
 
-    for(let i=0;i<count;i++){
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
 
         const start=
             i*angle;
@@ -1034,7 +1225,9 @@ function buildRoulette(){
         );
 
         const label=
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         label.className=
             "wheel-label";
@@ -1042,25 +1235,54 @@ function buildRoulette(){
         label.innerText=
             rouletteItems[i];
 
-        const radius=105;
+        /*
+           현재 칸의 중앙 각도
+        */
+
+        const middle=
+            start+
+            angle/2;
+
+        /*
+           이름을 룰렛 바깥쪽으로 이동하고
+           글자는 다시 반대로 회전시켜
+           항상 똑바로 보이게 함
+        */
 
         label.style.transform=
-            `rotate(${start+angle/2}deg) translate(${radius}px,-50%)`;
+            `translate(-50%,-50%)
+             rotate(${middle}deg)
+             translateY(-105px)
+             rotate(${-middle}deg)`;
 
-        wheel.appendChild(label);
+        wheel.appendChild(
+            label
+        );
+
     }
 
     wheel.style.background=
-        `conic-gradient(from 0deg,${gradient.join(",")})`;
+        `conic-gradient(
+            from 0deg,
+            ${gradient.join(",")}
+        )`;
+
 }
 
 
-document.getElementById("rouletteInput")
+document
+    .getElementById(
+        "rouletteInput"
+    )
     .addEventListener(
         "input",
         buildRoulette
     );
 
+
+/*
+   룰렛 돌리기
+*/
 
 function spinRoulette(){
 
@@ -1069,22 +1291,33 @@ function spinRoulette(){
 
     buildRoulette();
 
-    if(rouletteItems.length<2){
+    if(
+        rouletteItems.length<2
+    ){
 
-        document.getElementById(
-            "rouletteResult"
-        ).innerText=
-            "참가자를 2명 이상 입력해주세요.";
+        document
+            .getElementById(
+                "rouletteResult"
+            )
+            .innerText=
+                "참가자를 2명 이상 입력해주세요.";
 
         return;
+
     }
+
+    /*
+       브라우저에서 효과음 재생 권한 확보
+    */
 
     getAudio();
 
     rouletteSpinning=true;
 
     const wheel=
-        document.getElementById("wheel");
+        document.getElementById(
+            "wheel"
+        );
 
     const count=
         rouletteItems.length;
@@ -1097,65 +1330,93 @@ function spinRoulette(){
             Math.random()*count
         );
 
+    /*
+       당첨 칸의 중앙 각도
+    */
+
     const targetCenter=
         winner*segment+
         segment/2;
 
+    /*
+       위쪽 포인터로 이동
+    */
+
     const desired=
         360-targetCenter;
 
-    const extra=
-        360*7;
+    /*
+       7바퀴 회전
+    */
 
     rouletteRotation+=
-        extra+desired;
+        360*7+
+        desired;
 
     wheel.style.transform=
         `rotate(${rouletteRotation}deg)`;
 
-    document.getElementById(
-        "rouletteResult"
-    ).innerText=
-        "룰렛이 돌아가는 중...";
+    document
+        .getElementById(
+            "rouletteResult"
+        )
+        .innerText=
+            "룰렛이 돌아가는 중...";
+
+    /*
+       회전 소리는 없음.
+       회전이 끝났을 때 당첨 소리만 재생.
+    */
 
     setTimeout(()=>{
 
         rouletteSpinning=false;
 
-        document.getElementById(
-            "rouletteResult"
-        ).innerHTML=
-            `🎉 <strong>${rouletteItems[winner]}</strong> 당첨!`;
-
-        /* 당첨될 때만 소리 */
+        document
+            .getElementById(
+                "rouletteResult"
+            )
+            .innerHTML=
+                `🎉 <strong>${rouletteItems[winner]}</strong> 당첨!`;
 
         playWin();
 
     },5250);
+
 }
 
 
+/*
+   룰렛 초기화
+*/
+
 function clearRoulette(){
 
-    document.getElementById(
-        "rouletteInput"
-    ).value="";
+    document
+        .getElementById(
+            "rouletteInput"
+        )
+        .value="";
 
-    document.getElementById(
-        "rouletteResult"
-    ).innerText=
-        "결과가 여기에 표시됩니다.";
+    document
+        .getElementById(
+            "rouletteResult"
+        )
+        .innerText=
+            "결과가 여기에 표시됩니다.";
 
     rouletteItems=[];
 
-    document.getElementById(
-        "wheel"
-    ).innerHTML="";
+    const wheel=
+        document.getElementById(
+            "wheel"
+        );
 
-    document.getElementById(
-        "wheel"
-    ).style.background=
+    wheel.innerHTML="";
+
+    wheel.style.background=
         "#202329";
+
 }
 
 
@@ -1165,7 +1426,9 @@ function clearRoulette(){
 
 function shuffle(array){
 
-    const arr=[...array];
+    const arr=[
+        ...array
+    ];
 
     for(
         let i=arr.length-1;
@@ -1175,46 +1438,63 @@ function shuffle(array){
 
         const j=
             Math.floor(
-                Math.random()*(i+1)
+                Math.random()*
+                (i+1)
             );
 
-        [arr[i],arr[j]]=
-            [arr[j],arr[i]];
+        [
+            arr[i],
+            arr[j]
+        ]=[
+            arr[j],
+            arr[i]
+        ];
 
     }
 
     return arr;
+
 }
 
 
 function makeTeams(){
 
     const people=
-        document.getElementById(
-            "teamInput"
-        ).value
-        .split("\n")
-        .map(x=>x.trim())
-        .filter(Boolean);
+        document
+            .getElementById(
+                "teamInput"
+            )
+            .value
+            .split("\n")
+            .map(x=>x.trim())
+            .filter(Boolean);
 
     const count=
         parseInt(
-            document.getElementById(
-                "teamCount"
-            ).value
+            document
+                .getElementById(
+                    "teamCount"
+                )
+                .value
         );
 
-    if(people.length<count){
+    if(
+        people.length<count
+    ){
 
-        document.getElementById(
-            "teamResult"
-        ).innerHTML=`
-            <div class="panel">
-                참가자 수가 팀 수보다 많아야 합니다.
-            </div>
-        `;
+        document
+            .getElementById(
+                "teamResult"
+            )
+            .innerHTML=
+                `
+                <div class="panel">
+                    참가자 수가 팀 수보다 많아야 합니다.
+                </div>
+                `;
 
         return;
+
     }
 
     const shuffled=
@@ -1281,6 +1561,7 @@ function makeTeams(){
 
         }
     );
+
 }
 
 
@@ -1289,7 +1570,9 @@ function makeTeams(){
 ===================================================== */
 
 let timerSeconds=300;
+
 let timerRunning=false;
+
 let timerInterval=null;
 
 
@@ -1305,46 +1588,57 @@ function updateTimerDisplay(){
 
     const m=
         String(minutes)
-        .padStart(2,"0");
+            .padStart(2,"0");
 
     const s=
         String(seconds)
-        .padStart(2,"0");
+            .padStart(2,"0");
 
-    document.getElementById(
-        "timerDisplay"
-    ).innerText=
-        `${m}:${s}`;
+    document
+        .getElementById(
+            "timerDisplay"
+        )
+        .innerText=
+            `${m}:${s}`;
 
     const total=
         parseInt(
-            document.getElementById(
-                "timerMinutes"
-            ).value||5
+            document
+                .getElementById(
+                    "timerMinutes"
+                )
+                .value||5
         )*60+
         parseInt(
-            document.getElementById(
-                "timerSeconds"
-            ).value||0
+            document
+                .getElementById(
+                    "timerSeconds"
+                )
+                .value||0
         );
 
     const progress=
         total>0
-        ?Math.max(
+        ?
+        Math.max(
             0,
             Math.min(
                 1,
                 timerSeconds/total
             )
         )
-        :0;
+        :
+        0;
 
-    document.getElementById(
-        "timerCircle"
-    ).style.setProperty(
-        "--progress",
-        `${progress*360}deg`
-    );
+    document
+        .getElementById(
+            "timerCircle"
+        )
+        .style.setProperty(
+            "--progress",
+            `${progress*360}deg`
+        );
+
 }
 
 
@@ -1358,53 +1652,72 @@ function startTimer(){
             timerInterval
         );
 
-        document.getElementById(
-            "timerStart"
-        ).innerText=
-            "계속";
+        document
+            .getElementById(
+                "timerStart"
+            )
+            .innerText=
+                "계속";
 
-        document.getElementById(
-            "timerStatus"
-        ).innerText=
-            "일시정지";
+        document
+            .getElementById(
+                "timerStatus"
+            )
+            .innerText=
+                "일시정지";
 
         return;
+
     }
 
-    if(timerSeconds<=0){
+    if(
+        timerSeconds<=0
+    ){
 
         const minutes=
             parseInt(
-                document.getElementById(
-                    "timerMinutes"
-                ).value||0
+                document
+                    .getElementById(
+                        "timerMinutes"
+                    )
+                    .value||0
             );
 
         const seconds=
             parseInt(
-                document.getElementById(
-                    "timerSeconds"
-                ).value||0
+                document
+                    .getElementById(
+                        "timerSeconds"
+                    )
+                    .value||0
             );
 
         timerSeconds=
-            minutes*60+seconds;
+            minutes*60+
+            seconds;
+
     }
 
-    if(timerSeconds<=0)
+    if(
+        timerSeconds<=0
+    )
         return;
 
     timerRunning=true;
 
-    document.getElementById(
-        "timerStart"
-    ).innerText=
-        "일시정지";
+    document
+        .getElementById(
+            "timerStart"
+        )
+        .innerText=
+            "일시정지";
 
-    document.getElementById(
-        "timerStatus"
-    ).innerText=
-        "진행 중";
+    document
+        .getElementById(
+            "timerStatus"
+        )
+        .innerText=
+            "진행 중";
 
     clearInterval(
         timerInterval
@@ -1417,7 +1730,9 @@ function startTimer(){
 
             updateTimerDisplay();
 
-            if(timerSeconds<=0){
+            if(
+                timerSeconds<=0
+            ){
 
                 clearInterval(
                     timerInterval
@@ -1425,23 +1740,24 @@ function startTimer(){
 
                 timerRunning=false;
 
-                document.getElementById(
-                    "timerStart"
-                ).innerText=
-                    "시작";
+                document
+                    .getElementById(
+                        "timerStart"
+                    )
+                    .innerText=
+                        "시작";
 
-                document.getElementById(
-                    "timerStatus"
-                ).innerText=
-                    "완료";
-
-                try{
-                    playWin();
-                }catch(e){}
+                document
+                    .getElementById(
+                        "timerStatus"
+                    )
+                    .innerText=
+                        "완료";
 
             }
 
         },1000);
+
 }
 
 
@@ -1455,60 +1771,73 @@ function resetTimer(){
 
     const minutes=
         parseInt(
-            document.getElementById(
-                "timerMinutes"
-            ).value||5
+            document
+                .getElementById(
+                    "timerMinutes"
+                )
+                .value||5
         );
 
     const seconds=
         parseInt(
-            document.getElementById(
-                "timerSeconds"
-            ).value||0
+            document
+                .getElementById(
+                    "timerSeconds"
+                )
+                .value||0
         );
 
     timerSeconds=
         Math.max(
             0,
-            minutes*60+seconds
+            minutes*60+
+            seconds
         );
 
-    document.getElementById(
-        "timerStart"
-    ).innerText=
-        "시작";
+    document
+        .getElementById(
+            "timerStart"
+        )
+        .innerText=
+            "시작";
 
-    document.getElementById(
-        "timerStatus"
-    ).innerText=
-        "준비됨";
+    document
+        .getElementById(
+            "timerStatus"
+        )
+        .innerText=
+            "준비됨";
 
     updateTimerDisplay();
+
 }
 
 
-/* 시간 입력 변경 */
+/* 시간 변경 */
 
-document.getElementById(
-    "timerMinutes"
-).addEventListener(
-    "change",
-    ()=>{
-        if(!timerRunning)
-            resetTimer();
-    }
-);
+document
+    .getElementById(
+        "timerMinutes"
+    )
+    .addEventListener(
+        "change",
+        ()=>{
+            if(!timerRunning)
+                resetTimer();
+        }
+    );
 
-
-document.getElementById(
-    "timerSeconds"
-).addEventListener(
-    "change",
-    ()=>{
-        if(!timerRunning)
-            resetTimer();
-    }
-);
+document
+    .getElementById(
+        "timerSeconds"
+    )
+    .addEventListener(
+        "change",
+        ()=>{
+            if(!timerRunning)
+                resetTimer();
+        }
+    );
 
 
 /* =====================================================
@@ -1516,6 +1845,7 @@ document.getElementById(
 ===================================================== */
 
 buildRoulette();
+
 updateTimerDisplay();
 
 </script>
