@@ -3,262 +3,642 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>툴픽 - 유용한 도구 모음</title>
+<title>툴픽</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:#08090b;
+    color:#f5f5f5;
+    font-family:Arial,"Noto Sans KR",sans-serif;
+    overflow-x:hidden;
+}
+
+.app{
+    min-height:100vh;
+    display:flex;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:78px;
+    background:#0d0f12;
+    border-right:1px solid #1d2025;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:18px 0;
+    z-index:100;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#17191e;
+    border:1px solid #292d34;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    font-weight:900;
+    margin-bottom:28px;
+}
+
+.logo span{
+    color:#fff;
+}
+
+.side-menu{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.side-btn{
+    width:46px;
+    height:46px;
+    border:0;
+    background:transparent;
+    color:#777d87;
+    border-radius:12px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transition:.2s;
+}
+
+.side-btn svg{
+    width:21px;
+    height:21px;
+    stroke:currentColor;
+}
+
+.side-btn:hover{
+    background:#181b20;
+    color:#fff;
+}
+
+.side-btn.active{
+    background:#202329;
+    color:#fff;
+}
+
+.side-btn.active::before{
+    content:"";
+    position:absolute;
+    left:-16px;
+    width:3px;
+    height:22px;
+    border-radius:4px;
+    background:#fff;
+}
+
+/* 툴팁 */
+
+.side-btn::after{
+    content:attr(data-name);
+    position:absolute;
+    left:60px;
+    background:#17191e;
+    border:1px solid #292d34;
+    padding:7px 10px;
+    border-radius:7px;
+    font-size:12px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transform:translateX(-5px);
+    transition:.15s;
+}
+
+.side-btn:hover::after{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    margin-left:78px;
+    width:calc(100% - 78px);
+    min-height:100vh;
+    padding:48px;
+}
+
+.page{
+    display:none;
+    animation:fadeIn .25s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.header{
+    margin-bottom:34px;
+}
+
+.header h1{
+    font-size:32px;
+    letter-spacing:-1px;
+    margin-bottom:9px;
+}
+
+.header p{
+    color:#777e89;
+    font-size:14px;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
+
+.tool-card{
+    background:#0e1013;
+    border:1px solid #20242a;
+    border-radius:16px;
+    padding:25px;
+    min-height:190px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.tool-card:hover{
+    transform:translateY(-4px);
+    border-color:#3b4049;
+    background:#111419;
+}
+
+.tool-icon{
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#181b20;
+    border-radius:12px;
+    margin-bottom:25px;
+}
+
+.tool-icon svg{
+    width:22px;
+    height:22px;
+}
+
+.tool-card h2{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.tool-card p{
+    color:#737a85;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* =========================
+   COMMON BOX
+========================= */
+
+.content-box{
+    background:#0e1013;
+    border:1px solid #20242a;
+    border-radius:16px;
+    padding:28px;
+    max-width:900px;
+}
+
+textarea,
+input{
+    width:100%;
+    background:#090a0c;
+    border:1px solid #292d34;
+    border-radius:9px;
+    padding:13px;
+    color:#fff;
+    outline:none;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+textarea:focus,
+input:focus{
+    border-color:#555b65;
+}
+
+button.primary{
+    border:0;
+    background:#f2f2f2;
+    color:#090a0c;
+    padding:12px 18px;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button.primary:hover{
+    background:#d8d8d8;
+}
+
+button.secondary{
+    border:1px solid #292d34;
+    background:#16181c;
+    color:#ddd;
+    padding:12px 18px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+/* =========================
+   ROULETTE
+========================= */
+
+.roulette-layout{
+    display:flex;
+    gap:45px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.wheel-area{
+    position:relative;
+    width:430px;
+    height:430px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.wheel{
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    border:8px solid #252932;
+    position:relative;
+    overflow:hidden;
+    background:#181b20;
+    transition:transform 4s cubic-bezier(.12,.8,.15,1);
+    box-shadow:0 0 0 1px #000,0 15px 50px rgba(0,0,0,.5);
+}
+
+.wheel-labels{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+}
+
+.wheel-label{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:130px;
+    margin-left:-65px;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+    transform-origin:65px 0;
+}
+
+.pointer{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:30px solid #fff;
+    z-index:5;
+    filter:drop-shadow(0 3px 5px #000);
+}
+
+.wheel-center{
+    position:absolute;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#0c0d10;
+    border:5px solid #fff;
+    z-index:4;
+}
+
+.roulette-controls{
+    width:330px;
+}
+
+.result-big{
+    margin-top:20px;
+    background:#17191e;
+    border:1px solid #292d34;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+    font-size:18px;
+}
+
+/* =========================
+   LADDER
+========================= */
+
+.ladder-board{
+    margin-top:25px;
+    background:#090a0c;
+    border:1px solid #24282f;
+    border-radius:14px;
+    min-height:470px;
+    padding:35px;
+    overflow:auto;
+}
+
+.ladder{
+    position:relative;
+    min-width:500px;
+    height:380px;
+}
+
+.vertical{
+    position:absolute;
+    top:25px;
+    bottom:25px;
+    width:3px;
+    background:#777;
+}
+
+.horizontal{
+    position:absolute;
+    height:3px;
+    background:#777;
+    transform-origin:left center;
+}
+
+.ladder-names{
+    position:absolute;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+}
+
+.ladder-name{
+    width:90px;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.ladder-results{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+}
+
+.ladder-result-name{
+    width:90px;
+    text-align:center;
+    color:#aaa;
+    font-size:13px;
+}
+
+.runner{
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 15px rgba(255,255,255,.8);
+    z-index:10;
+    transition:all .35s linear;
+}
+
+/* =========================
+   TEAM
+========================= */
+
+.team-result{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:12px;
+}
+
+.team{
+    background:#17191e;
+    border:1px solid #292d34;
+    border-radius:11px;
+    padding:17px;
+}
+
+.team h3{
+    margin-bottom:12px;
+    font-size:14px;
+}
+
+.member{
+    color:#aeb3bc;
+    font-size:13px;
+    padding:5px 0;
+}
+
+/* =========================
+   CLOCK STYLE TIMER
+========================= */
+
+.clock-container{
+    max-width:720px;
+}
+
+.timer-tabs{
+    display:flex;
+    gap:5px;
+    background:#111317;
+    border:1px solid #24282f;
+    border-radius:10px;
+    padding:5px;
+    width:max-content;
+    margin-bottom:25px;
+}
+
+.timer-tab{
+    border:0;
+    background:transparent;
+    color:#777d87;
+    padding:9px 18px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.timer-tab.active{
+    background:#24272d;
+    color:#fff;
+}
+
+.timer-card{
+    background:#0e1013;
+    border:1px solid #20242a;
+    border-radius:18px;
+    padding:40px;
+    text-align:center;
+}
+
+.timer-circle{
+    width:300px;
+    height:300px;
+    margin:10px auto 30px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    background:
+        radial-gradient(circle,#0d0f12 69%,transparent 70%),
+        conic-gradient(#eee 0deg,#eee 360deg);
+}
+
+.timer-circle::before{
+    content:"";
+    position:absolute;
+    inset:7px;
+    border-radius:50%;
+    background:#0d0f12;
+    border:1px solid #252930;
+}
+
+.timer-display{
+    position:relative;
+    z-index:2;
+    font-size:58px;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-3px;
+}
+
+.timer-label{
+    color:#777e88;
+    font-size:13px;
+    margin-top:10px;
+}
+
+.timer-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.timer-buttons button{
+    min-width:105px;
+}
+
+.timer-inputs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.timer-inputs input{
+    width:100px;
+    text-align:center;
+    font-size:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .sidebar{
+        width:62px;
     }
 
-    body {
-        font-family: Arial, "Noto Sans KR", sans-serif;
-        background: #0b0d11;
-        color: #f5f7fa;
-        min-height: 100vh;
+    .side-btn{
+        width:42px;
+        height:42px;
     }
 
-    /* 전체 레이아웃 */
-    .app {
-        display: flex;
-        min-height: 100vh;
+    .side-btn::after{
+        display:none;
     }
 
-    /* 왼쪽 메뉴 */
-    .sidebar {
-        width: 245px;
-        background: #11141a;
-        border-right: 1px solid #252a33;
-        padding: 24px 14px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
+    .main{
+        margin-left:62px;
+        width:calc(100% - 62px);
+        padding:25px 17px;
     }
 
-    .logo {
-        font-size: 23px;
-        font-weight: 800;
-        padding: 8px 14px 30px;
-        letter-spacing: -1px;
+    .header h1{
+        font-size:25px;
     }
 
-    .logo span {
-        color: #7c5cff;
+    .roulette-layout{
+        justify-content:center;
     }
 
-    .menu-title {
-        color: #707783;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 0 14px 10px;
+    .wheel-area{
+        width:330px;
+        height:330px;
     }
 
-    .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+    .wheel{
+        width:285px;
+        height:285px;
     }
 
-    .menu button {
-        width: 100%;
-        border: none;
-        background: transparent;
-        color: #9da4af;
-        padding: 12px 14px;
-        border-radius: 9px;
-        text-align: left;
-        font-size: 15px;
-        cursor: pointer;
-        transition: 0.2s;
+    .roulette-controls{
+        width:100%;
     }
 
-    .menu button:hover {
-        background: #1c2028;
-        color: white;
+    .timer-circle{
+        width:250px;
+        height:250px;
     }
 
-    .menu button.active {
-        background: #24202f;
-        color: white;
+    .timer-display{
+        font-size:46px;
     }
-
-    /* 메인 */
-    .main {
-        margin-left: 245px;
-        width: calc(100% - 245px);
-        padding: 45px;
-    }
-
-    .top {
-        margin-bottom: 40px;
-    }
-
-    .top h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-        letter-spacing: -1px;
-    }
-
-    .top p {
-        color: #858c98;
-        font-size: 15px;
-    }
-
-    /* 도구 카드 */
-    .tools {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px;
-    }
-
-    .card {
-        background: #12151b;
-        border: 1px solid #252a33;
-        border-radius: 15px;
-        padding: 25px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .card:hover {
-        transform: translateY(-3px);
-        border-color: #4c5360;
-        background: #151920;
-    }
-
-    .icon {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .card h2 {
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-
-    .card p {
-        color: #858c98;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    /* 도구 화면 */
-    .tool-page {
-        display: none;
-    }
-
-    .tool-page.show {
-        display: block;
-    }
-
-    .back {
-        border: none;
-        background: #191d25;
-        color: #c8cdd5;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-bottom: 25px;
-    }
-
-    .tool-box {
-        max-width: 700px;
-        background: #12151b;
-        border: 1px solid #252a33;
-        border-radius: 15px;
-        padding: 30px;
-    }
-
-    input, textarea {
-        width: 100%;
-        background: #0d1015;
-        color: white;
-        border: 1px solid #303641;
-        border-radius: 8px;
-        padding: 13px;
-        outline: none;
-        margin: 10px 0;
-    }
-
-    input:focus, textarea:focus {
-        border-color: #7c5cff;
-    }
-
-    .primary {
-        border: none;
-        background: #7c5cff;
-        color: white;
-        padding: 12px 18px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        margin-top: 8px;
-    }
-
-    .primary:hover {
-        background: #6948e8;
-    }
-
-    .result {
-        margin-top: 20px;
-        padding: 18px;
-        background: #191d25;
-        border-radius: 9px;
-        color: #dfe3e9;
-        min-height: 50px;
-    }
-
-    /* 타이머 */
-    .timer {
-        font-size: 65px;
-        font-weight: bold;
-        text-align: center;
-        margin: 25px 0;
-    }
-
-    /* 모바일 */
-    @media (max-width: 700px) {
-        .sidebar {
-            width: 75px;
-            padding: 20px 8px;
-        }
-
-        .logo {
-            font-size: 0;
-            text-align: center;
-            padding: 8px 0 30px;
-        }
-
-        .logo span {
-            font-size: 24px;
-        }
-
-        .menu-title {
-            display: none;
-        }
-
-        .menu button {
-            font-size: 0;
-            text-align: center;
-            padding: 13px 5px;
-        }
-
-        .menu button::first-letter {
-            font-size: 20px;
-        }
-
-        .main {
-            margin-left: 75px;
-            width: calc(100% - 75px);
-            padding: 25px 18px;
-        }
-
-        .top h1 {
-            font-size: 25px;
-        }
-    }
+}
 </style>
 </head>
 
@@ -266,370 +646,845 @@
 
 <div class="app">
 
-    <!-- 왼쪽 사이드바 -->
-    <aside class="sidebar">
+<!-- ================= SIDEBAR ================= -->
 
-        <div class="logo">
-            TOOL<span>PICK</span>
+<aside class="sidebar">
+
+    <div class="logo">T</div>
+
+    <div class="side-menu">
+
+        <button class="side-btn active"
+                data-name="홈"
+                onclick="openPage('home',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 10.5 12 3l9 7.5"/>
+                <path d="M5 9v11h14V9"/>
+            </svg>
+        </button>
+
+        <button class="side-btn"
+                data-name="룰렛"
+                onclick="openPage('roulette',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3v18M3 12h18"/>
+                <circle cx="12" cy="12" r="2"/>
+            </svg>
+        </button>
+
+        <button class="side-btn"
+                data-name="사다리타기"
+                onclick="openPage('ladder',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 3v18M18 3v18"/>
+                <path d="M6 7h12M6 12h12M6 17h12"/>
+            </svg>
+        </button>
+
+        <button class="side-btn"
+                data-name="팀 나누기"
+                onclick="openPage('team',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="8" r="3"/>
+                <circle cx="17" cy="9" r="2.5"/>
+                <path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/>
+                <path d="M15 15c3 0 5 1.8 5 4"/>
+            </svg>
+        </button>
+
+        <button class="side-btn"
+                data-name="타이머"
+                onclick="openPage('timer',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="13" r="8"/>
+                <path d="M12 13V8"/>
+                <path d="M9 3h6"/>
+                <path d="M12 3v2"/>
+                <path d="m18 7 2-2"/>
+            </svg>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="header">
+        <h1>필요한 도구를 선택하세요</h1>
+        <p>간단하고 편리한 도구를 한곳에서 사용할 수 있습니다.</p>
+    </div>
+
+    <div class="tool-grid">
+
+        <div class="tool-card" onclick="openByName('roulette')">
+            <div class="tool-icon">
+                🎡
+            </div>
+            <h2>룰렛</h2>
+            <p>원형 룰렛을 돌려 랜덤으로 하나를 선택합니다.</p>
         </div>
 
-        <div class="menu-title">MENU</div>
+        <div class="tool-card" onclick="openByName('ladder')">
+            <div class="tool-icon">
+                🪜
+            </div>
+            <h2>사다리타기</h2>
+            <p>실제 사다리를 따라 결과를 확인합니다.</p>
+        </div>
 
-        <nav class="menu">
-            <button class="active" onclick="showHome()">🏠 홈</button>
-            <button onclick="openTool('roulette')">🎡 룰렛</button>
-            <button onclick="openTool('ladder')">🪜 사다리타기</button>
-            <button onclick="openTool('team')">👥 팀 나누기</button>
-            <button onclick="openTool('timer')">⏱️ 타이머</button>
-        </nav>
+        <div class="tool-card" onclick="openByName('team')">
+            <div class="tool-icon">
+                👥
+            </div>
+            <h2>팀 나누기</h2>
+            <p>참가자를 랜덤하게 여러 팀으로 나눕니다.</p>
+        </div>
 
-    </aside>
+        <div class="tool-card" onclick="openByName('timer')">
+            <div class="tool-icon">
+                ⏱
+            </div>
+            <h2>타이머</h2>
+            <p>시계 앱처럼 깔끔한 카운트다운 타이머입니다.</p>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- 메인 영역 -->
-    <main class="main">
+<!-- ROULETTE -->
 
-        <!-- 홈 -->
-        <section id="home">
+<section id="roulette" class="page">
 
-            <div class="top">
-                <h1>필요한 도구를 선택하세요</h1>
-                <p>간단하고 편리한 도구들을 한곳에서 사용할 수 있습니다.</p>
+    <div class="header">
+        <h1>룰렛</h1>
+        <p>원하는 항목을 입력하고 룰렛을 돌려보세요.</p>
+    </div>
+
+    <div class="roulette-layout">
+
+        <div class="wheel-area">
+
+            <div class="pointer"></div>
+
+            <div id="wheel" class="wheel">
+                <div id="wheelLabels" class="wheel-labels"></div>
             </div>
 
-            <div class="tools">
+            <div class="wheel-center"></div>
 
-                <div class="card" onclick="openTool('roulette')">
-                    <div class="icon">🎡</div>
-                    <h2>룰렛</h2>
-                    <p>여러 선택지 중 하나를 랜덤으로 골라보세요.</p>
+        </div>
+
+
+        <div class="roulette-controls content-box">
+
+            <textarea id="rouletteInput"
+                      rows="9"
+                      placeholder="철수&#10;영희&#10;민수&#10;준호"></textarea>
+
+            <button class="primary"
+                    onclick="spinRoulette()">
+                룰렛 돌리기
+            </button>
+
+            <div id="rouletteResult" class="result-big">
+                결과가 여기에 표시됩니다.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LADDER -->
+
+<section id="ladder" class="page">
+
+    <div class="header">
+        <h1>사다리타기</h1>
+        <p>참가자와 결과를 입력하면 실제 사다리 형태로 보여줍니다.</p>
+    </div>
+
+    <div class="content-box">
+
+        <textarea id="ladderPeople"
+                  rows="5"
+                  placeholder="철수&#10;영희&#10;민수&#10;준호"></textarea>
+
+        <textarea id="ladderResults"
+                  rows="5"
+                  placeholder="치킨 사기&#10;커피 사기&#10;청소하기&#10;간식 사기"></textarea>
+
+        <button class="primary" onclick="createLadder()">
+            사다리 만들기
+        </button>
+
+    </div>
+
+    <div id="ladderBoard" class="ladder-board">
+        참가자와 결과를 입력해주세요.
+    </div>
+
+</section>
+
+
+<!-- TEAM -->
+
+<section id="team" class="page">
+
+    <div class="header">
+        <h1>팀 나누기</h1>
+        <p>참가자를 랜덤하게 팀으로 나눕니다.</p>
+    </div>
+
+    <div class="content-box">
+
+        <textarea id="teamPeople"
+                  rows="8"
+                  placeholder="철수&#10;영희&#10;민수&#10;준호&#10;지훈&#10;수빈"></textarea>
+
+        <input id="teamCount"
+               type="number"
+               min="1"
+               value="2"
+               placeholder="팀 수">
+
+        <button class="primary" onclick="makeTeams()">
+            팀 나누기
+        </button>
+
+        <div id="teamResult" class="team-result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- TIMER -->
+
+<section id="timer" class="page">
+
+    <div class="header">
+        <h1>타이머</h1>
+        <p>시계 앱처럼 간단하게 사용할 수 있습니다.</p>
+    </div>
+
+    <div class="clock-container">
+
+        <div class="timer-tabs">
+            <button class="timer-tab active">
+                타이머
+            </button>
+        </div>
+
+        <div class="timer-card">
+
+            <div class="timer-inputs">
+
+                <input id="timerMinutes"
+                       type="number"
+                       min="0"
+                       placeholder="분">
+
+                <input id="timerSeconds"
+                       type="number"
+                       min="0"
+                       max="59"
+                       placeholder="초">
+
+            </div>
+
+            <div class="timer-circle">
+
+                <div>
+                    <div id="timerDisplay"
+                         class="timer-display">
+                        00:00
+                    </div>
+
+                    <div id="timerLabel"
+                         class="timer-label">
+                        준비됨
+                    </div>
                 </div>
 
-                <div class="card" onclick="openTool('ladder')">
-                    <div class="icon">🪜</div>
-                    <h2>사다리타기</h2>
-                    <p>누가 무엇을 할지 재미있게 결정해보세요.</p>
-                </div>
+            </div>
 
-                <div class="card" onclick="openTool('team')">
-                    <div class="icon">👥</div>
-                    <h2>팀 나누기</h2>
-                    <p>참가자를 입력하면 랜덤으로 팀을 만들어줍니다.</p>
-                </div>
+            <div class="timer-buttons">
 
-                <div class="card" onclick="openTool('timer')">
-                    <div class="icon">⏱️</div>
-                    <h2>타이머</h2>
-                    <p>원하는 시간을 설정하고 카운트다운하세요.</p>
-                </div>
+                <button class="primary"
+                        onclick="startTimer()">
+                    시작
+                </button>
+
+                <button class="secondary"
+                        onclick="pauseTimer()">
+                    일시정지
+                </button>
+
+                <button class="secondary"
+                        onclick="resetTimer()">
+                    초기화
+                </button>
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
+
+</section>
 
 
-        <!-- 룰렛 -->
-        <section id="roulette" class="tool-page">
-
-            <button class="back" onclick="showHome()">← 홈으로</button>
-
-            <div class="top">
-                <h1>🎡 룰렛</h1>
-                <p>선택지를 한 줄에 하나씩 입력하세요.</p>
-            </div>
-
-            <div class="tool-box">
-                <textarea id="rouletteInput" rows="8"
-                placeholder="철수&#10;영희&#10;민수&#10;준호"></textarea>
-
-                <button class="primary" onclick="spinRoulette()">룰렛 돌리기</button>
-
-                <div class="result" id="rouletteResult">
-                    결과가 여기에 표시됩니다.
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- 사다리 -->
-        <section id="ladder" class="tool-page">
-
-            <button class="back" onclick="showHome()">← 홈으로</button>
-
-            <div class="top">
-                <h1>🪜 사다리타기</h1>
-                <p>참가자와 결과를 입력하면 랜덤으로 연결합니다.</p>
-            </div>
-
-            <div class="tool-box">
-
-                <textarea id="ladderPeople" rows="6"
-                placeholder="참가자&#10;철수&#10;영희&#10;민수"></textarea>
-
-                <textarea id="ladderResults" rows="6"
-                placeholder="결과&#10;치킨 사기&#10;커피 사기&#10;청소하기"></textarea>
-
-                <button class="primary" onclick="ladderGame()">사다리 시작</button>
-
-                <div class="result" id="ladderResult">
-                    결과가 여기에 표시됩니다.
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- 팀 나누기 -->
-        <section id="team" class="tool-page">
-
-            <button class="back" onclick="showHome()">← 홈으로</button>
-
-            <div class="top">
-                <h1>👥 팀 나누기</h1>
-                <p>참가자를 입력하고 원하는 팀 수를 정하세요.</p>
-            </div>
-
-            <div class="tool-box">
-
-                <textarea id="teamPeople" rows="8"
-                placeholder="철수&#10;영희&#10;민수&#10;준호&#10;지훈&#10;수빈"></textarea>
-
-                <input id="teamCount" type="number" min="1" value="2"
-                placeholder="팀 수">
-
-                <button class="primary" onclick="makeTeams()">팀 나누기</button>
-
-                <div class="result" id="teamResult">
-                    결과가 여기에 표시됩니다.
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- 타이머 -->
-        <section id="timer" class="tool-page">
-
-            <button class="back" onclick="showHome()">← 홈으로</button>
-
-            <div class="top">
-                <h1>⏱️ 타이머</h1>
-                <p>원하는 시간을 설정하세요.</p>
-            </div>
-
-            <div class="tool-box">
-
-                <input id="minutes" type="number" min="0" placeholder="분">
-
-                <input id="seconds" type="number" min="0" max="59" placeholder="초">
-
-                <div class="timer" id="timerDisplay">
-                    00:00
-                </div>
-
-                <button class="primary" onclick="startTimer()">시작</button>
-                <button class="back" onclick="stopTimer()">정지</button>
-
-            </div>
-
-        </section>
-
-    </main>
-
+</main>
 </div>
 
 
 <script>
 
-let timerInterval;
-let remainingSeconds = 0;
+/* =========================
+   PAGE SYSTEM
+========================= */
 
+function openPage(id, button){
 
-/* 메뉴 화면 변경 */
-function openTool(tool) {
-
-    document.getElementById("home").style.display = "none";
-
-    document.querySelectorAll(".tool-page").forEach(page => {
-        page.classList.remove("show");
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
     });
 
-    document.getElementById(tool).classList.add("show");
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".side-btn").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    if(button){
+        button.classList.add("active");
+    }
+}
+
+function openByName(id){
+
+    const buttons=document.querySelectorAll(".side-btn");
+
+    buttons.forEach(btn=>{
+
+        if(btn.dataset.name){
+
+            const map={
+                "홈":"home",
+                "룰렛":"roulette",
+                "사다리타기":"ladder",
+                "팀 나누기":"team",
+                "타이머":"timer"
+            };
+
+            if(map[btn.dataset.name]===id){
+                openPage(id,btn);
+            }
+        }
+
+    });
 }
 
 
-/* 홈 */
-function showHome() {
+/* =========================
+   ROULETTE
+========================= */
 
-    document.querySelectorAll(".tool-page").forEach(page => {
-        page.classList.remove("show");
-    });
+let rouletteItems=[];
+let rouletteRotation=0;
 
-    document.getElementById("home").style.display = "block";
-}
+function updateWheel(){
 
+    const text=document.getElementById("rouletteInput").value;
 
-/* 룰렛 */
-function spinRoulette() {
-
-    const text = document.getElementById("rouletteInput").value;
-
-    const items = text
+    rouletteItems=text
         .split("\n")
-        .map(x => x.trim())
-        .filter(x => x !== "");
+        .map(x=>x.trim())
+        .filter(Boolean);
 
-    if (items.length === 0) {
-        document.getElementById("rouletteResult").innerText =
-            "선택지를 먼저 입력해주세요.";
+    if(rouletteItems.length<2){
+
+        rouletteItems=[
+            "철수",
+            "영희",
+            "민수",
+            "준호"
+        ];
+    }
+
+    const wheel=document.getElementById("wheel");
+    const labels=document.getElementById("wheelLabels");
+
+    const count=rouletteItems.length;
+    const colors=[];
+
+    for(let i=0;i<count;i++){
+
+        const start=(i/count)*100;
+        const end=((i+1)/count)*100;
+
+        colors.push(
+            `rgba(${35+i*8},${38+i*5},${44+i*3},1) ${start}% ${end}%`
+        );
+    }
+
+    wheel.style.background=
+        `conic-gradient(${colors.join(",")})`;
+
+    labels.innerHTML="";
+
+    rouletteItems.forEach((item,i)=>{
+
+        const angle=(360/count)*i+(180/count);
+
+        const label=document.createElement("div");
+
+        label.className="wheel-label";
+
+        label.style.transform=
+            `rotate(${angle}deg) translateY(-145px) rotate(${-angle}deg)`;
+
+        label.textContent=item;
+
+        labels.appendChild(label);
+
+    });
+}
+
+document
+.getElementById("rouletteInput")
+.addEventListener("input",updateWheel);
+
+updateWheel();
+
+
+function spinRoulette(){
+
+    updateWheel();
+
+    const count=rouletteItems.length;
+
+    const winner=
+        Math.floor(Math.random()*count);
+
+    const segment=360/count;
+
+    const target=
+        360*6
+        + (360-(winner*segment+segment/2));
+
+    rouletteRotation+=target;
+
+    const wheel=document.getElementById("wheel");
+
+    wheel.style.transform=
+        `rotate(${rouletteRotation}deg)`;
+
+    document.getElementById("rouletteResult").textContent=
+        "돌아가는 중...";
+
+    setTimeout(()=>{
+
+        document.getElementById("rouletteResult").innerHTML=
+            "🎉 <strong>"+rouletteItems[winner]+"</strong>";
+
+    },4100);
+}
+
+
+/* =========================
+   LADDER
+========================= */
+
+function createLadder(){
+
+    const people=document
+        .getElementById("ladderPeople")
+        .value
+        .split("\n")
+        .map(x=>x.trim())
+        .filter(Boolean);
+
+    const results=document
+        .getElementById("ladderResults")
+        .value
+        .split("\n")
+        .map(x=>x.trim())
+        .filter(Boolean);
+
+    if(people.length<2 || results.length<2){
+
+        document.getElementById("ladderBoard").innerHTML=
+            "참가자와 결과를 2개 이상 입력해주세요.";
+
         return;
     }
 
-    const result = items[Math.floor(Math.random() * items.length)];
+    const n=people.length;
 
-    document.getElementById("rouletteResult").innerHTML =
-        "🎉 결과<br><br><strong style='font-size:22px'>" +
-        result +
-        "</strong>";
-}
+    let shuffled=[...results]
+        .sort(()=>Math.random()-.5);
 
-
-/* 사다리 */
-function ladderGame() {
-
-    const people = document.getElementById("ladderPeople").value
-        .split("\n")
-        .map(x => x.trim())
-        .filter(x => x !== "");
-
-    const results = document.getElementById("ladderResults").value
-        .split("\n")
-        .map(x => x.trim())
-        .filter(x => x !== "");
-
-    if (people.length === 0 || results.length === 0) {
-        document.getElementById("ladderResult").innerText =
-            "참가자와 결과를 입력해주세요.";
-        return;
+    while(shuffled.length<n){
+        shuffled.push(
+            results[shuffled.length%results.length]
+        );
     }
 
-    const shuffled = [...results].sort(() => Math.random() - 0.5);
+    shuffled=shuffled.slice(0,n);
 
-    let output = "";
+    const board=document.getElementById("ladderBoard");
 
-    people.forEach((person, index) => {
+    board.innerHTML="";
 
-        const result = shuffled[index % shuffled.length];
+    const ladder=document.createElement("div");
 
-        output += "👤 " + person + " → " + result + "<br>";
+    ladder.className="ladder";
+
+    /* 이름 */
+
+    const names=document.createElement("div");
+
+    names.className="ladder-names";
+
+    people.forEach(person=>{
+
+        const el=document.createElement("div");
+
+        el.className="ladder-name";
+        el.textContent=person;
+
+        names.appendChild(el);
+
     });
 
-    document.getElementById("ladderResult").innerHTML = output;
+    ladder.appendChild(names);
+
+
+    /* 결과 */
+
+    const resultRow=document.createElement("div");
+
+    resultRow.className="ladder-results";
+
+    shuffled.forEach(result=>{
+
+        const el=document.createElement("div");
+
+        el.className="ladder-result-name";
+        el.textContent=result;
+
+        resultRow.appendChild(el);
+
+    });
+
+    ladder.appendChild(resultRow);
+
+
+    /* 세로줄 */
+
+    const positions=[];
+
+    for(let i=0;i<n;i++){
+
+        const x=
+            n===1 ? 50 : (i/(n-1))*100;
+
+        positions.push(x);
+
+        const line=document.createElement("div");
+
+        line.className="vertical";
+
+        line.style.left=`${x}%`;
+
+        ladder.appendChild(line);
+
+    }
+
+
+    /* 가로줄 */
+
+    const rows=7;
+
+    for(let r=0;r<rows;r++){
+
+        const y=65+r*42;
+
+        for(let i=0;i<n-1;i++){
+
+            if(Math.random()<0.45){
+
+                const line=document.createElement("div");
+
+                line.className="horizontal";
+
+                const left=positions[i];
+                const width=positions[i+1]-positions[i];
+
+                line.style.left=`${left}%`;
+                line.style.top=`${y}px`;
+                line.style.width=`${width}%`;
+
+                ladder.appendChild(line);
+
+            }
+
+        }
+
+    }
+
+    board.appendChild(ladder);
+
+
+    /* 실제 이동 애니메이션 */
+
+    setTimeout(()=>{
+
+        const runner=document.createElement("div");
+
+        runner.className="runner";
+
+        runner.style.left=
+            `calc(${positions[0]}% - 5px)`;
+
+        runner.style.top="25px";
+
+        ladder.appendChild(runner);
+
+        let current=0;
+
+        let step=0;
+
+        const interval=setInterval(()=>{
+
+            step++;
+
+            runner.style.top=
+                `${25+step*42}px`;
+
+            if(step>=rows){
+
+                clearInterval(interval);
+
+                setTimeout(()=>{
+
+                    alert(
+                        people[0]+" → "+shuffled[current]
+                    );
+
+                },400);
+
+            }
+
+        },450);
+
+    },300);
+
 }
 
 
-/* 팀 나누기 */
-function makeTeams() {
+/* =========================
+   TEAM
+========================= */
 
-    const people = document.getElementById("teamPeople").value
+function makeTeams(){
+
+    const people=document
+        .getElementById("teamPeople")
+        .value
         .split("\n")
-        .map(x => x.trim())
-        .filter(x => x !== "");
+        .map(x=>x.trim())
+        .filter(Boolean);
 
-    const teamCount =
-        parseInt(document.getElementById("teamCount").value);
+    const count=
+        parseInt(
+            document.getElementById("teamCount").value
+        );
 
-    if (people.length === 0 || !teamCount || teamCount < 1) {
-        document.getElementById("teamResult").innerText =
-            "참가자와 팀 수를 입력해주세요.";
+    if(!people.length || count<1){
         return;
     }
 
-    people.sort(() => Math.random() - 0.5);
+    people.sort(()=>Math.random()-.5);
 
-    let teams = [];
+    const teams=[];
 
-    for (let i = 0; i < teamCount; i++) {
+    for(let i=0;i<count;i++){
         teams.push([]);
     }
 
-    people.forEach((person, index) => {
-        teams[index % teamCount].push(person);
+    people.forEach((person,index)=>{
+        teams[index%count].push(person);
     });
 
-    let output = "";
+    const result=document.getElementById("teamResult");
 
-    teams.forEach((team, index) => {
+    result.innerHTML="";
 
-        output +=
-            "<strong>TEAM " + (index + 1) +
-            "</strong><br>";
+    teams.forEach((team,index)=>{
 
-        output += team.join(" · ") + "<br><br>";
+        const box=document.createElement("div");
+
+        box.className="team";
+
+        box.innerHTML=
+            `<h3>TEAM ${index+1}</h3>`+
+            team
+            .map(member=>`<div class="member">${member}</div>`)
+            .join("");
+
+        result.appendChild(box);
+
     });
-
-    document.getElementById("teamResult").innerHTML = output;
 }
 
 
-/* 타이머 */
-function startTimer() {
+/* =========================
+   TIMER
+========================= */
 
-    stopTimer();
+let timerInterval=null;
+let timerRemaining=0;
+let timerTotal=0;
+let timerRunning=false;
 
-    const minutes =
-        parseInt(document.getElementById("minutes").value) || 0;
 
-    const seconds =
-        parseInt(document.getElementById("seconds").value) || 0;
+function formatTime(seconds){
 
-    remainingSeconds = minutes * 60 + seconds;
+    const min=
+        Math.floor(seconds/60);
 
-    if (remainingSeconds <= 0) {
+    const sec=
+        seconds%60;
+
+    return String(min).padStart(2,"0")
+        +":"
+        +String(sec).padStart(2,"0");
+}
+
+
+function updateTimer(){
+
+    document.getElementById("timerDisplay")
+        .textContent=
+        formatTime(timerRemaining);
+
+    const label=
+        document.getElementById("timerLabel");
+
+    if(timerRunning){
+        label.textContent="실행 중";
+    }
+    else if(timerRemaining<=0){
+        label.textContent="준비됨";
+    }
+    else{
+        label.textContent="일시정지";
+    }
+}
+
+
+function startTimer(){
+
+    if(timerRunning){
         return;
     }
 
+    if(timerRemaining<=0){
+
+        const minutes=
+            parseInt(
+                document.getElementById("timerMinutes").value
+            )||0;
+
+        const seconds=
+            parseInt(
+                document.getElementById("timerSeconds").value
+            )||0;
+
+        timerRemaining=
+            minutes*60+seconds;
+
+        timerTotal=timerRemaining;
+    }
+
+    if(timerRemaining<=0){
+        return;
+    }
+
+    timerRunning=true;
+
     updateTimer();
 
-    timerInterval = setInterval(() => {
+    timerInterval=setInterval(()=>{
 
-        remainingSeconds--;
+        timerRemaining--;
 
         updateTimer();
 
-        if (remainingSeconds <= 0) {
+        if(timerRemaining<=0){
 
-            stopTimer();
+            clearInterval(timerInterval);
 
-            alert("⏰ 시간이 끝났습니다!");
+            timerInterval=null;
+            timerRunning=false;
+
+            updateTimer();
+
+            alert("⏰ 시간이 끝났습니다.");
+
         }
 
-    }, 1000);
+    },1000);
 }
 
 
-function updateTimer() {
+function pauseTimer(){
 
-    const min =
-        Math.floor(remainingSeconds / 60);
+    if(timerInterval){
 
-    const sec =
-        remainingSeconds % 60;
+        clearInterval(timerInterval);
 
-    document.getElementById("timerDisplay").innerText =
-        String(min).padStart(2, "0") +
-        ":" +
-        String(sec).padStart(2, "0");
+        timerInterval=null;
+    }
+
+    timerRunning=false;
+
+    updateTimer();
 }
 
 
-function stopTimer() {
+function resetTimer(){
 
-    clearInterval(timerInterval);
+    pauseTimer();
+
+    timerRemaining=0;
+    timerTotal=0;
+
+    document.getElementById("timerMinutes").value="";
+    document.getElementById("timerSeconds").value="";
+
+    updateTimer();
 }
+
+
+updateTimer();
 
 </script>
 
