@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>툴픽 - 유용한 도구 모음</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, "Noto Sans KR", sans-serif;
+        background: #0b0d11;
+        color: #f5f7fa;
+        min-height: 100vh;
+    }
+
+    /* 전체 레이아웃 */
+    .app {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    /* 왼쪽 메뉴 */
+    .sidebar {
+        width: 245px;
+        background: #11141a;
+        border-right: 1px solid #252a33;
+        padding: 24px 14px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .logo {
+        font-size: 23px;
+        font-weight: 800;
+        padding: 8px 14px 30px;
+        letter-spacing: -1px;
+    }
+
+    .logo span {
+        color: #7c5cff;
+    }
+
+    .menu-title {
+        color: #707783;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0 14px 10px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu button {
+        width: 100%;
+        border: none;
+        background: transparent;
+        color: #9da4af;
+        padding: 12px 14px;
+        border-radius: 9px;
+        text-align: left;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .menu button:hover {
+        background: #1c2028;
+        color: white;
+    }
+
+    .menu button.active {
+        background: #24202f;
+        color: white;
+    }
+
+    /* 메인 */
+    .main {
+        margin-left: 245px;
+        width: calc(100% - 245px);
+        padding: 45px;
+    }
+
+    .top {
+        margin-bottom: 40px;
+    }
+
+    .top h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+    }
+
+    .top p {
+        color: #858c98;
+        font-size: 15px;
+    }
+
+    /* 도구 카드 */
+    .tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+    }
+
+    .card {
+        background: #12151b;
+        border: 1px solid #252a33;
+        border-radius: 15px;
+        padding: 25px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        border-color: #4c5360;
+        background: #151920;
+    }
+
+    .icon {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .card p {
+        color: #858c98;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* 도구 화면 */
+    .tool-page {
+        display: none;
+    }
+
+    .tool-page.show {
+        display: block;
+    }
+
+    .back {
+        border: none;
+        background: #191d25;
+        color: #c8cdd5;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 25px;
+    }
+
+    .tool-box {
+        max-width: 700px;
+        background: #12151b;
+        border: 1px solid #252a33;
+        border-radius: 15px;
+        padding: 30px;
+    }
+
+    input, textarea {
+        width: 100%;
+        background: #0d1015;
+        color: white;
+        border: 1px solid #303641;
+        border-radius: 8px;
+        padding: 13px;
+        outline: none;
+        margin: 10px 0;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #7c5cff;
+    }
+
+    .primary {
+        border: none;
+        background: #7c5cff;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .primary:hover {
+        background: #6948e8;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 18px;
+        background: #191d25;
+        border-radius: 9px;
+        color: #dfe3e9;
+        min-height: 50px;
+    }
+
+    /* 타이머 */
+    .timer {
+        font-size: 65px;
+        font-weight: bold;
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    /* 모바일 */
+    @media (max-width: 700px) {
+        .sidebar {
+            width: 75px;
+            padding: 20px 8px;
+        }
+
+        .logo {
+            font-size: 0;
+            text-align: center;
+            padding: 8px 0 30px;
+        }
+
+        .logo span {
+            font-size: 24px;
+        }
+
+        .menu-title {
+            display: none;
+        }
+
+        .menu button {
+            font-size: 0;
+            text-align: center;
+            padding: 13px 5px;
+        }
+
+        .menu button::first-letter {
+            font-size: 20px;
+        }
+
+        .main {
+            margin-left: 75px;
+            width: calc(100% - 75px);
+            padding: 25px 18px;
+        }
+
+        .top h1 {
+            font-size: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            TOOL<span>PICK</span>
+        </div>
+
+        <div class="menu-title">MENU</div>
+
+        <nav class="menu">
+            <button class="active" onclick="showHome()">🏠 홈</button>
+            <button onclick="openTool('roulette')">🎡 룰렛</button>
+            <button onclick="openTool('ladder')">🪜 사다리타기</button>
+            <button onclick="openTool('team')">👥 팀 나누기</button>
+            <button onclick="openTool('timer')">⏱️ 타이머</button>
+        </nav>
+
+    </aside>
+
+
+    <!-- 메인 영역 -->
+    <main class="main">
+
+        <!-- 홈 -->
+        <section id="home">
+
+            <div class="top">
+                <h1>필요한 도구를 선택하세요</h1>
+                <p>간단하고 편리한 도구들을 한곳에서 사용할 수 있습니다.</p>
+            </div>
+
+            <div class="tools">
+
+                <div class="card" onclick="openTool('roulette')">
+                    <div class="icon">🎡</div>
+                    <h2>룰렛</h2>
+                    <p>여러 선택지 중 하나를 랜덤으로 골라보세요.</p>
+                </div>
+
+                <div class="card" onclick="openTool('ladder')">
+                    <div class="icon">🪜</div>
+                    <h2>사다리타기</h2>
+                    <p>누가 무엇을 할지 재미있게 결정해보세요.</p>
+                </div>
+
+                <div class="card" onclick="openTool('team')">
+                    <div class="icon">👥</div>
+                    <h2>팀 나누기</h2>
+                    <p>참가자를 입력하면 랜덤으로 팀을 만들어줍니다.</p>
+                </div>
+
+                <div class="card" onclick="openTool('timer')">
+                    <div class="icon">⏱️</div>
+                    <h2>타이머</h2>
+                    <p>원하는 시간을 설정하고 카운트다운하세요.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 룰렛 -->
+        <section id="roulette" class="tool-page">
+
+            <button class="back" onclick="showHome()">← 홈으로</button>
+
+            <div class="top">
+                <h1>🎡 룰렛</h1>
+                <p>선택지를 한 줄에 하나씩 입력하세요.</p>
+            </div>
+
+            <div class="tool-box">
+                <textarea id="rouletteInput" rows="8"
+                placeholder="철수&#10;영희&#10;민수&#10;준호"></textarea>
+
+                <button class="primary" onclick="spinRoulette()">룰렛 돌리기</button>
+
+                <div class="result" id="rouletteResult">
+                    결과가 여기에 표시됩니다.
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- 사다리 -->
+        <section id="ladder" class="tool-page">
+
+            <button class="back" onclick="showHome()">← 홈으로</button>
+
+            <div class="top">
+                <h1>🪜 사다리타기</h1>
+                <p>참가자와 결과를 입력하면 랜덤으로 연결합니다.</p>
+            </div>
+
+            <div class="tool-box">
+
+                <textarea id="ladderPeople" rows="6"
+                placeholder="참가자&#10;철수&#10;영희&#10;민수"></textarea>
+
+                <textarea id="ladderResults" rows="6"
+                placeholder="결과&#10;치킨 사기&#10;커피 사기&#10;청소하기"></textarea>
+
+                <button class="primary" onclick="ladderGame()">사다리 시작</button>
+
+                <div class="result" id="ladderResult">
+                    결과가 여기에 표시됩니다.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 팀 나누기 -->
+        <section id="team" class="tool-page">
+
+            <button class="back" onclick="showHome()">← 홈으로</button>
+
+            <div class="top">
+                <h1>👥 팀 나누기</h1>
+                <p>참가자를 입력하고 원하는 팀 수를 정하세요.</p>
+            </div>
+
+            <div class="tool-box">
+
+                <textarea id="teamPeople" rows="8"
+                placeholder="철수&#10;영희&#10;민수&#10;준호&#10;지훈&#10;수빈"></textarea>
+
+                <input id="teamCount" type="number" min="1" value="2"
+                placeholder="팀 수">
+
+                <button class="primary" onclick="makeTeams()">팀 나누기</button>
+
+                <div class="result" id="teamResult">
+                    결과가 여기에 표시됩니다.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 타이머 -->
+        <section id="timer" class="tool-page">
+
+            <button class="back" onclick="showHome()">← 홈으로</button>
+
+            <div class="top">
+                <h1>⏱️ 타이머</h1>
+                <p>원하는 시간을 설정하세요.</p>
+            </div>
+
+            <div class="tool-box">
+
+                <input id="minutes" type="number" min="0" placeholder="분">
+
+                <input id="seconds" type="number" min="0" max="59" placeholder="초">
+
+                <div class="timer" id="timerDisplay">
+                    00:00
+                </div>
+
+                <button class="primary" onclick="startTimer()">시작</button>
+                <button class="back" onclick="stopTimer()">정지</button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+let timerInterval;
+let remainingSeconds = 0;
+
+
+/* 메뉴 화면 변경 */
+function openTool(tool) {
+
+    document.getElementById("home").style.display = "none";
+
+    document.querySelectorAll(".tool-page").forEach(page => {
+        page.classList.remove("show");
+    });
+
+    document.getElementById(tool).classList.add("show");
+}
+
+
+/* 홈 */
+function showHome() {
+
+    document.querySelectorAll(".tool-page").forEach(page => {
+        page.classList.remove("show");
+    });
+
+    document.getElementById("home").style.display = "block";
+}
+
+
+/* 룰렛 */
+function spinRoulette() {
+
+    const text = document.getElementById("rouletteInput").value;
+
+    const items = text
+        .split("\n")
+        .map(x => x.trim())
+        .filter(x => x !== "");
+
+    if (items.length === 0) {
+        document.getElementById("rouletteResult").innerText =
+            "선택지를 먼저 입력해주세요.";
+        return;
+    }
+
+    const result = items[Math.floor(Math.random() * items.length)];
+
+    document.getElementById("rouletteResult").innerHTML =
+        "🎉 결과<br><br><strong style='font-size:22px'>" +
+        result +
+        "</strong>";
+}
+
+
+/* 사다리 */
+function ladderGame() {
+
+    const people = document.getElementById("ladderPeople").value
+        .split("\n")
+        .map(x => x.trim())
+        .filter(x => x !== "");
+
+    const results = document.getElementById("ladderResults").value
+        .split("\n")
+        .map(x => x.trim())
+        .filter(x => x !== "");
+
+    if (people.length === 0 || results.length === 0) {
+        document.getElementById("ladderResult").innerText =
+            "참가자와 결과를 입력해주세요.";
+        return;
+    }
+
+    const shuffled = [...results].sort(() => Math.random() - 0.5);
+
+    let output = "";
+
+    people.forEach((person, index) => {
+
+        const result = shuffled[index % shuffled.length];
+
+        output += "👤 " + person + " → " + result + "<br>";
+    });
+
+    document.getElementById("ladderResult").innerHTML = output;
+}
+
+
+/* 팀 나누기 */
+function makeTeams() {
+
+    const people = document.getElementById("teamPeople").value
+        .split("\n")
+        .map(x => x.trim())
+        .filter(x => x !== "");
+
+    const teamCount =
+        parseInt(document.getElementById("teamCount").value);
+
+    if (people.length === 0 || !teamCount || teamCount < 1) {
+        document.getElementById("teamResult").innerText =
+            "참가자와 팀 수를 입력해주세요.";
+        return;
+    }
+
+    people.sort(() => Math.random() - 0.5);
+
+    let teams = [];
+
+    for (let i = 0; i < teamCount; i++) {
+        teams.push([]);
+    }
+
+    people.forEach((person, index) => {
+        teams[index % teamCount].push(person);
+    });
+
+    let output = "";
+
+    teams.forEach((team, index) => {
+
+        output +=
+            "<strong>TEAM " + (index + 1) +
+            "</strong><br>";
+
+        output += team.join(" · ") + "<br><br>";
+    });
+
+    document.getElementById("teamResult").innerHTML = output;
+}
+
+
+/* 타이머 */
+function startTimer() {
+
+    stopTimer();
+
+    const minutes =
+        parseInt(document.getElementById("minutes").value) || 0;
+
+    const seconds =
+        parseInt(document.getElementById("seconds").value) || 0;
+
+    remainingSeconds = minutes * 60 + seconds;
+
+    if (remainingSeconds <= 0) {
+        return;
+    }
+
+    updateTimer();
+
+    timerInterval = setInterval(() => {
+
+        remainingSeconds--;
+
+        updateTimer();
+
+        if (remainingSeconds <= 0) {
+
+            stopTimer();
+
+            alert("⏰ 시간이 끝났습니다!");
+        }
+
+    }, 1000);
+}
+
+
+function updateTimer() {
+
+    const min =
+        Math.floor(remainingSeconds / 60);
+
+    const sec =
+        remainingSeconds % 60;
+
+    document.getElementById("timerDisplay").innerText =
+        String(min).padStart(2, "0") +
+        ":" +
+        String(sec).padStart(2, "0");
+}
+
+
+function stopTimer() {
+
+    clearInterval(timerInterval);
+}
+
+</script>
+
+</body>
+</html>
