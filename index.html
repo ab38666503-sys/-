@@ -2,14 +2,14 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>TOOLPICK</title>
 
 <style>
 *{
     box-sizing:border-box;
     margin:0;
-    padding:0;
+    padding:0
 }
 
 :root{
@@ -23,12 +23,26 @@
     --hover:#1a1a1a;
 }
 
+body.light{
+    --bg:#f4f5f7;
+    --panel:#ffffff;
+    --panel2:#f0f1f3;
+    --border:#dfe2e7;
+    --border2:#cfd3da;
+    --text:#17191d;
+    --sub:#68707c;
+    --hover:#e8e9ec;
+}
+
 body{
     font-family:Arial,"Noto Sans KR",sans-serif;
     background:var(--bg);
     color:var(--text);
     min-height:100vh;
     overflow-x:hidden;
+    transition:
+        background .25s,
+        color .25s
 }
 
 /* ================= SIDEBAR ================= */
@@ -46,6 +60,9 @@ body{
     align-items:center;
     padding:18px 0;
     z-index:1000;
+    transition:
+        background .25s,
+        border .25s
 }
 
 .logo{
@@ -61,7 +78,7 @@ body{
     font-weight:900;
     font-size:20px;
     margin-bottom:24px;
-    flex-shrink:0;
+    flex-shrink:0
 }
 
 .side-menu{
@@ -69,7 +86,7 @@ body{
     flex-direction:column;
     gap:9px;
     width:100%;
-    align-items:center;
+    align-items:center
 }
 
 .side-btn{
@@ -84,7 +101,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    transition:.2s;
+    transition:.2s
 }
 
 .side-btn svg{
@@ -92,13 +109,13 @@ body{
     height:22px;
     stroke:currentColor;
     fill:none;
-    stroke-width:1.8;
+    stroke-width:1.8
 }
 
 .side-btn:hover,
 .side-btn.active{
     color:var(--text);
-    background:var(--hover);
+    background:var(--hover)
 }
 
 .side-btn::after{
@@ -117,11 +134,20 @@ body{
     pointer-events:none;
     transition:.15s;
     border:1px solid #30343c;
-    z-index:2000;
+    z-index:2000
 }
 
 .side-btn:hover::after{
-    opacity:1;
+    opacity:1
+}
+
+/* 설정을 맨 아래로 */
+
+.sidebar-bottom{
+    margin-top:auto;
+    width:100%;
+    display:flex;
+    justify-content:center
 }
 
 /* ================= MAIN ================= */
@@ -129,69 +155,71 @@ body{
 .main{
     margin-left:78px;
     min-height:100vh;
-    padding:38px;
+    padding:38px
 }
 
 .page{
     display:none;
-    animation:pageIn .25s ease;
+    animation:pageIn .25s ease
 }
 
 .page.active{
-    display:block;
+    display:block
 }
 
 @keyframes pageIn{
     from{
         opacity:0;
-        transform:translateY(7px);
+        transform:translateY(7px)
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0)
     }
 }
 
 .header{
-    margin-bottom:30px;
+    margin-bottom:30px
 }
 
 .header h1{
     font-size:32px;
-    letter-spacing:-1px;
+    letter-spacing:-1px
 }
 
 .header p{
     color:var(--sub);
-    margin-top:8px;
+    margin-top:8px
 }
 
 /* ================= HOME ================= */
 
 .tools-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+    gap:16px
 }
 
 .tool-card{
-    background:linear-gradient(
-        145deg,
-        var(--panel),
-        var(--panel2)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
     border:1px solid var(--border);
     border-radius:18px;
     padding:24px;
     min-height:170px;
     cursor:pointer;
-    transition:.25s;
+    transition:.25s
 }
 
 .tool-card:hover{
     transform:translateY(-4px);
-    border-color:var(--border2);
+    border-color:var(--border2)
 }
 
 .tool-icon{
@@ -202,7 +230,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-bottom:20px;
+    margin-bottom:20px
 }
 
 .tool-icon svg{
@@ -210,17 +238,17 @@ body{
     height:22px;
     stroke:var(--text);
     fill:none;
-    stroke-width:1.8;
+    stroke-width:1.8
 }
 
 .tool-card h3{
     font-size:17px;
-    margin-bottom:7px;
+    margin-bottom:7px
 }
 
 .tool-card p{
     color:var(--sub);
-    font-size:13px;
+    font-size:13px
 }
 
 /* ================= COMMON ================= */
@@ -230,6 +258,9 @@ body{
     border:1px solid var(--border);
     border-radius:18px;
     padding:25px;
+    transition:
+        background .25s,
+        border .25s
 }
 
 textarea,
@@ -243,17 +274,18 @@ select{
     border-radius:11px;
     padding:12px;
     font-size:14px;
+    transition:.2s
 }
 
 textarea{
     min-height:130px;
-    resize:vertical;
+    resize:vertical
 }
 
 textarea:focus,
 input:focus,
 select:focus{
-    border-color:#666d79;
+    border-color:#666d79
 }
 
 button.primary{
@@ -264,12 +296,12 @@ button.primary{
     border-radius:10px;
     font-weight:bold;
     cursor:pointer;
-    transition:.2s;
+    transition:.2s
 }
 
 button.primary:hover{
     opacity:.85;
-    transform:translateY(-1px);
+    transform:translateY(-1px)
 }
 
 button.secondary{
@@ -279,21 +311,21 @@ button.secondary{
     padding:11px 17px;
     border-radius:10px;
     cursor:pointer;
-    transition:.2s;
+    transition:.2s
 }
 
 button.secondary:hover{
-    background:var(--hover);
+    background:var(--hover)
 }
 
 .row{
     display:flex;
     gap:10px;
-    flex-wrap:wrap;
+    flex-wrap:wrap
 }
 
 .mt{
-    margin-top:16px;
+    margin-top:16px
 }
 
 /* ================= ROULETTE ================= */
@@ -301,20 +333,20 @@ button.secondary:hover{
 .roulette-layout{
     display:grid;
     grid-template-columns:330px 1fr;
-    gap:25px;
+    gap:25px
 }
 
 .roulette-wheel-area{
     display:flex;
     align-items:center;
     justify-content:center;
-    min-height:420px;
+    min-height:420px
 }
 
 .wheel-wrap{
     position:relative;
     width:310px;
-    height:310px;
+    height:310px
 }
 
 .wheel{
@@ -327,7 +359,19 @@ button.secondary:hover{
     box-shadow:
         0 0 0 2px #0a0b0d,
         0 20px 60px rgba(0,0,0,.5);
-    transition:transform 5.2s cubic-bezier(.12,.78,.15,1);
+    transition:
+        transform 5.2s
+        cubic-bezier(.12,.78,.15,1)
+}
+
+.wheel::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,.5);
+    pointer-events:none
 }
 
 .wheel-label{
@@ -336,6 +380,7 @@ button.secondary:hover{
     top:50%;
     width:90px;
     height:30px;
+    margin:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -345,8 +390,9 @@ button.secondary:hover{
     text-align:center;
     white-space:nowrap;
     pointer-events:none;
-    text-shadow:0 1px 4px rgba(0,0,0,.9);
-    z-index:3;
+    text-shadow:
+        0 1px 4px rgba(0,0,0,.9);
+    z-index:3
 }
 
 .pointer{
@@ -360,7 +406,10 @@ button.secondary:hover{
     border-left:13px solid transparent;
     border-right:13px solid transparent;
     border-top:30px solid var(--text);
-    filter:drop-shadow(0 3px 5px rgba(0,0,0,.5));
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,.5)
+        )
 }
 
 .wheel-center{
@@ -379,7 +428,7 @@ button.secondary:hover{
     align-items:center;
     justify-content:center;
     font-size:11px;
-    font-weight:bold;
+    font-weight:bold
 }
 
 .result-box{
@@ -387,33 +436,34 @@ button.secondary:hover{
     text-align:center;
     min-height:35px;
     color:var(--sub);
-    font-size:15px;
+    font-size:15px
 }
 
 /* ================= TEAM ================= */
 
 .team-result{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
     gap:14px;
-    margin-top:20px;
+    margin-top:20px
 }
 
 .team-card{
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:14px;
-    padding:18px;
+    padding:18px
 }
 
 .team-card h3{
-    margin-bottom:12px;
+    margin-bottom:12px
 }
 
 .team-member{
     color:var(--sub);
     font-size:13px;
-    padding:5px 0;
+    padding:5px 0
 }
 
 /* ================= TIMER ================= */
@@ -423,7 +473,7 @@ button.secondary:hover{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    min-height:570px;
+    min-height:570px
 }
 
 .timer-circle{
@@ -445,7 +495,7 @@ button.secondary:hover{
     justify-content:center;
     box-shadow:
         0 0 60px rgba(0,0,0,.15),
-        inset 0 0 30px rgba(0,0,0,.3);
+        inset 0 0 30px rgba(0,0,0,.3)
 }
 
 .timer-inner{
@@ -456,172 +506,25 @@ button.secondary:hover{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:center
 }
 
 .timer-display{
     font-family:monospace;
     font-size:55px;
-    letter-spacing:3px;
+    letter-spacing:3px
 }
 
 .timer-status{
     color:var(--sub);
     margin-top:9px;
-    font-size:13px;
+    font-size:13px
 }
 
 .timer-controls{
     display:flex;
     gap:10px;
-    margin-top:30px;
-}
-
-/* ================= COIN ================= */
-
-.coin-page{
-    min-height:650px;
-}
-
-.coin-layout{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    min-height:560px;
-}
-
-.coin-choice-title{
-    color:var(--sub);
-    font-size:14px;
-    margin-bottom:14px;
-}
-
-.coin-choice{
-    display:flex;
-    gap:10px;
-    margin-bottom:45px;
-}
-
-.coin-choice button{
-    min-width:130px;
-    padding:13px 22px;
-    border-radius:12px;
-    border:1px solid var(--border2);
-    background:var(--panel2);
-    color:var(--text);
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.coin-choice button:hover{
-    background:var(--hover);
-}
-
-.coin-choice button.selected{
-    background:#1a1a1a;
-    border-color:#fff;
-    box-shadow:0 0 0 1px rgba(255,255,255,.1);
-}
-
-.coin-stage{
-    width:180px;
-    height:180px;
-    perspective:900px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:35px;
-}
-
-.coin{
-    width:150px;
-    height:150px;
-    position:relative;
-    transform-style:preserve-3d;
-    transition:transform 2.8s cubic-bezier(.15,.8,.2,1);
-}
-
-.coin-face{
-    position:absolute;
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    backface-visibility:hidden;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    border:8px solid #777;
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #eee,
-            #aaa 45%,
-            #666 100%
-        );
-    color:#222;
-    box-shadow:
-        inset 0 0 15px rgba(0,0,0,.35),
-        0 12px 25px rgba(0,0,0,.35);
-}
-
-.coin-face::before{
-    content:"";
-    position:absolute;
-    inset:12px;
-    border-radius:50%;
-    border:2px solid rgba(0,0,0,.25);
-}
-
-.coin-symbol{
-    font-size:48px;
-    font-weight:900;
-    position:relative;
-    z-index:2;
-}
-
-.coin-text{
-    font-size:12px;
-    font-weight:bold;
-    margin-top:4px;
-    position:relative;
-    z-index:2;
-}
-
-.coin-back{
-    transform:rotateY(180deg);
-}
-
-.coin-result{
-    min-height:65px;
-    text-align:center;
-}
-
-.coin-result-main{
-    font-size:24px;
-    font-weight:900;
-    margin-bottom:7px;
-}
-
-.coin-result-sub{
-    color:var(--sub);
-    font-size:13px;
-}
-
-.coin-flip{
-    animation:coinShadow 2.8s ease;
-}
-
-@keyframes coinShadow{
-    0%,100%{
-        filter:drop-shadow(0 15px 20px rgba(0,0,0,.3));
-    }
-
-    50%{
-        filter:drop-shadow(0 30px 30px rgba(0,0,0,.5));
-    }
+    margin-top:30px
 }
 
 /* ================= MEMO ================= */
@@ -630,7 +533,7 @@ button.secondary:hover{
     display:grid;
     grid-template-columns:270px 1fr;
     gap:18px;
-    min-height:600px;
+    min-height:600px
 }
 
 .memo-sidebar{
@@ -640,19 +543,19 @@ button.secondary:hover{
     padding:16px;
     display:flex;
     flex-direction:column;
-    min-height:600px;
+    min-height:600px
 }
 
 .memo-new{
     width:100%;
-    margin-bottom:14px;
+    margin-bottom:14px
 }
 
 .memo-list{
     display:flex;
     flex-direction:column;
     gap:6px;
-    overflow-y:auto;
+    overflow-y:auto
 }
 
 .memo-item{
@@ -664,16 +567,16 @@ button.secondary:hover{
     cursor:pointer;
     text-align:left;
     transition:.2s;
-    overflow:hidden;
+    overflow:hidden
 }
 
 .memo-item:hover{
-    background:var(--hover);
+    background:var(--hover)
 }
 
 .memo-item.active{
     background:var(--hover);
-    border-color:var(--border2);
+    border-color:var(--border2)
 }
 
 .memo-item-title{
@@ -681,13 +584,13 @@ button.secondary:hover{
     font-weight:bold;
     overflow:hidden;
     text-overflow:ellipsis;
-    white-space:nowrap;
+    white-space:nowrap
 }
 
 .memo-item-date{
     color:var(--sub);
     font-size:10px;
-    margin-top:5px;
+    margin-top:5px
 }
 
 .memo-empty{
@@ -695,7 +598,7 @@ button.secondary:hover{
     font-size:12px;
     text-align:center;
     padding:25px 8px;
-    line-height:1.6;
+    line-height:1.6
 }
 
 .memo-editor{
@@ -705,37 +608,110 @@ button.secondary:hover{
     padding:20px;
     display:flex;
     flex-direction:column;
-    min-height:600px;
+    min-height:600px
 }
 
 .memo-editor-top{
     display:flex;
     gap:10px;
     align-items:center;
-    margin-bottom:14px;
+    margin-bottom:14px
 }
 
 .memo-title-input{
     flex:1;
     font-size:18px;
-    font-weight:bold;
+    font-weight:bold
 }
 
 .memo-delete{
-    color:#ff7777 !important;
+    color:#ff7777 !important
 }
 
 .memo-content{
     flex:1;
     min-height:480px;
     resize:none;
-    line-height:1.7;
+    line-height:1.7
 }
 
 .memo-save-status{
     color:var(--sub);
     font-size:11px;
-    margin-top:9px;
+    margin-top:9px
+}
+
+/* ================= SETTINGS ================= */
+
+.settings-panel{
+    max-width:700px
+}
+
+.setting-section{
+    padding:20px 0;
+    border-bottom:1px solid var(--border)
+}
+
+.setting-section:first-child{
+    padding-top:0
+}
+
+.setting-section:last-child{
+    border-bottom:0
+}
+
+.setting-title{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:7px
+}
+
+.setting-description{
+    color:var(--sub);
+    font-size:13px;
+    margin-bottom:15px
+}
+
+.theme-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px
+}
+
+.theme-option{
+    border:1px solid var(--border2);
+    background:var(--panel2);
+    color:var(--text);
+    border-radius:14px;
+    padding:18px;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s
+}
+
+.theme-option:hover{
+    background:var(--hover)
+}
+
+.theme-option.active{
+    border-color:var(--text);
+    background:var(--hover)
+}
+
+.theme-option-icon{
+    font-size:24px;
+    margin-bottom:10px
+}
+
+.theme-option-name{
+    font-weight:bold;
+    font-size:14px
+}
+
+.theme-option-desc{
+    color:var(--sub);
+    font-size:11px;
+    margin-top:5px
 }
 
 /* ================= MODAL ================= */
@@ -748,11 +724,11 @@ button.secondary:hover{
     align-items:center;
     justify-content:center;
     z-index:3000;
-    padding:20px;
+    padding:20px
 }
 
 .modal-bg.show{
-    display:flex;
+    display:flex
 }
 
 .modal{
@@ -762,25 +738,25 @@ button.secondary:hover{
     border:1px solid var(--border);
     border-radius:18px;
     padding:24px;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
+    box-shadow:0 25px 80px rgba(0,0,0,.45)
 }
 
 .modal h2{
     font-size:20px;
-    margin-bottom:8px;
+    margin-bottom:8px
 }
 
 .modal p{
     color:var(--sub);
     font-size:13px;
-    margin-bottom:18px;
+    margin-bottom:18px
 }
 
 .modal-buttons{
     display:flex;
     justify-content:flex-end;
     gap:9px;
-    margin-top:15px;
+    margin-top:15px
 }
 
 /* ================= RESPONSIVE ================= */
@@ -788,59 +764,63 @@ button.secondary:hover{
 @media(max-width:800px){
 
     .sidebar{
-        width:64px;
+        width:64px
     }
 
     .logo{
         width:38px;
         height:38px;
-        font-size:16px;
+        font-size:16px
     }
 
     .side-btn{
         width:42px;
-        height:42px;
+        height:42px
     }
 
     .main{
         margin-left:64px;
-        padding:22px 16px;
+        padding:22px 16px
     }
 
     .roulette-layout{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr
     }
 
     .wheel-wrap,
     .wheel{
         width:280px;
-        height:280px;
+        height:280px
     }
 
     .timer-circle{
         width:280px;
-        height:280px;
+        height:280px
     }
 
     .timer-inner{
         width:240px;
-        height:240px;
+        height:240px
     }
 
     .timer-display{
-        font-size:42px;
+        font-size:42px
     }
 
     .memo-layout{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr
     }
 
     .memo-sidebar{
-        min-height:200px;
+        min-height:200px
     }
 
     .memo-editor{
-        min-height:500px;
+        min-height:500px
+    }
+
+    .theme-options{
+        grid-template-columns:1fr
     }
 }
 </style>
@@ -857,6 +837,7 @@ button.secondary:hover{
     <div class="side-menu">
 
         <!-- 홈 -->
+
         <button
             class="side-btn active"
             data-tooltip="홈"
@@ -868,8 +849,8 @@ button.secondary:hover{
             </svg>
         </button>
 
-
         <!-- 룰렛 -->
+
         <button
             class="side-btn"
             data-tooltip="룰렛"
@@ -884,8 +865,8 @@ button.secondary:hover{
             </svg>
         </button>
 
-
         <!-- 팀 나누기 -->
+
         <button
             class="side-btn"
             data-tooltip="팀 나누기"
@@ -899,8 +880,8 @@ button.secondary:hover{
             </svg>
         </button>
 
-
         <!-- 타이머 -->
+
         <button
             class="side-btn"
             data-tooltip="타이머"
@@ -915,23 +896,8 @@ button.secondary:hover{
             </svg>
         </button>
 
-
-        <!-- 동전 던지기 -->
-        <button
-            class="side-btn"
-            data-tooltip="동전 던지기"
-            onclick="openPage('coin',this)"
-        >
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="8"/>
-                <path d="M9 8h4.5a2 2 0 0 1 0 4H9"/>
-                <path d="M9 12h5a2 2 0 0 1 0 4H9"/>
-                <path d="M11 6v12"/>
-            </svg>
-        </button>
-
-
         <!-- 메모장 -->
+
         <button
             class="side-btn"
             data-tooltip="메모장"
@@ -953,6 +919,80 @@ button.secondary:hover{
 
     </div>
 
+    <!-- 설정 : 사이드바 맨 아래 -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="side-btn"
+            data-tooltip="설정"
+            onclick="openPage('settings',this)"
+        >
+            <svg viewBox="0 0 24 24">
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                />
+
+                <path
+                    d="
+                    M19.4 15
+                    a1.7 1.7 0 0 0
+                    .34 1.88
+                    l.06.06
+                    -1.7 1.7
+                    -.06-.06
+                    a1.7 1.7 0 0 0
+                    -1.88-.34
+                    1.7 1.7 0 0 0
+                    -1.04 1.56V20
+                    h-2.4
+                    v-.2
+                    a1.7 1.7 0 0 0
+                    -1.04-1.56
+                    1.7 1.7 0 0 0
+                    -1.88.34
+                    l-.06.06
+                    -1.7-1.7
+                    .06-.06
+                    A1.7 1.7 0 0 0
+                    6.4 15
+                    1.7 1.7 0 0 0
+                    4.84 13.96H4.6v-2.4h.24
+                    A1.7 1.7 0 0 0
+                    6.4 10
+                    1.7 1.7 0 0 0
+                    6.06 8.12
+                    L6 8.06
+                    l1.7-1.7
+                    .06.06
+                    A1.7 1.7 0 0 0
+                    9.64 6.76
+                    1.7 1.7 0 0 0
+                    10.68 5.2V5
+                    h2.4v.2
+                    a1.7 1.7 0 0 0
+                    1.04 1.56
+                    1.7 1.7 0 0 0
+                    1.88-.34
+                    l.06-.06
+                    1.7 1.7
+                    -.06.06
+                    A1.7 1.7 0 0 0
+                    17.36 10
+                    1.7 1.7 0 0 0
+                    18.96 11.04H19.2v2.4h-.24
+                    A1.7 1.7 0 0 0
+                    17.4 15
+                    Z
+                    "
+                />
+            </svg>
+        </button>
+
+    </div>
+
 </aside>
 
 
@@ -963,22 +1003,26 @@ button.secondary:hover{
 <section id="home" class="page active">
 
     <div class="header">
+
         <h1>TOOLPICK</h1>
+
         <p>
             필요한 도구를 한곳에서 간단하게.
         </p>
-    </div>
 
+    </div>
 
     <div class="tools-grid">
 
         <!-- 룰렛 -->
+
         <div
             class="tool-card"
             onclick="openPage('roulette')"
         >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="8.5"/>
                     <circle cx="12" cy="12" r="2"/>
@@ -986,6 +1030,7 @@ button.secondary:hover{
                     <path d="m18 6-4.2 4.2"/>
                     <path d="M20.5 12h-6"/>
                 </svg>
+
             </div>
 
             <h3>룰렛</h3>
@@ -998,17 +1043,20 @@ button.secondary:hover{
 
 
         <!-- 팀 나누기 -->
+
         <div
             class="tool-card"
             onclick="openPage('team')"
         >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
                     <circle cx="9" cy="8" r="3"/>
                     <circle cx="17" cy="9" r="2.5"/>
                     <path d="M3.5 19c.5-3.3 2.2-5 5.5-5s5 1.7 5.5 5"/>
                 </svg>
+
             </div>
 
             <h3>팀 나누기</h3>
@@ -1021,59 +1069,40 @@ button.secondary:hover{
 
 
         <!-- 타이머 -->
+
         <div
             class="tool-card"
             onclick="openPage('timer')"
         >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
                     <circle cx="12" cy="13" r="7.5"/>
                     <path d="M12 13V9"/>
                     <path d="M12 3v2"/>
                 </svg>
+
             </div>
 
             <h3>타이머</h3>
 
             <p>
-                깔끔한 타이머를 사용합니다.
+                깔끔한 시스템 시계 스타일 타이머.
             </p>
 
         </div>
 
 
-        <!-- 동전 -->
-        <div
-            class="tool-card"
-            onclick="openPage('coin')"
-        >
+        <!-- 메모장 -->
 
-            <div class="tool-icon">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8"/>
-                    <path d="M9 8h4.5a2 2 0 0 1 0 4H9"/>
-                    <path d="M9 12h5a2 2 0 0 1 0 4H9"/>
-                    <path d="M11 6v12"/>
-                </svg>
-            </div>
-
-            <h3>동전 던지기</h3>
-
-            <p>
-                원하는 면을 선택하고 동전을 던집니다.
-            </p>
-
-        </div>
-
-
-        <!-- 메모 -->
         <div
             class="tool-card"
             onclick="openPage('memo')"
         >
 
             <div class="tool-icon">
+
                 <svg viewBox="0 0 24 24">
                     <rect
                         x="5"
@@ -1086,6 +1115,7 @@ button.secondary:hover{
                     <path d="M8 12h8"/>
                     <path d="M8 16h5"/>
                 </svg>
+
             </div>
 
             <h3>메모장</h3>
@@ -1114,7 +1144,6 @@ button.secondary:hover{
         </p>
 
     </div>
-
 
     <div class="roulette-layout">
 
@@ -1197,7 +1226,6 @@ button.secondary:hover{
 
     </div>
 
-
     <div class="panel">
 
         <textarea id="teamInput">철수
@@ -1215,10 +1243,23 @@ button.secondary:hover{
                 id="teamCount"
                 style="max-width:180px"
             >
-                <option value="2">2팀</option>
-                <option value="3">3팀</option>
-                <option value="4">4팀</option>
-                <option value="5">5팀</option>
+
+                <option value="2">
+                    2팀
+                </option>
+
+                <option value="3">
+                    3팀
+                </option>
+
+                <option value="4">
+                    4팀
+                </option>
+
+                <option value="5">
+                    5팀
+                </option>
+
             </select>
 
             <button
@@ -1231,7 +1272,6 @@ button.secondary:hover{
         </div>
 
     </div>
-
 
     <div
         id="teamResult"
@@ -1254,7 +1294,6 @@ button.secondary:hover{
         </p>
 
     </div>
-
 
     <div class="timer-layout">
 
@@ -1338,116 +1377,6 @@ button.secondary:hover{
 </section>
 
 
-<!-- ================= COIN ================= -->
-
-<section id="coin" class="page coin-page">
-
-    <div class="header">
-
-        <h1>동전 던지기</h1>
-
-        <p>
-            원하는 면을 선택하고 동전을 던져보세요.
-        </p>
-
-    </div>
-
-
-    <div class="panel coin-layout">
-
-        <div class="coin-choice-title">
-            내가 선택할 면
-        </div>
-
-
-        <div class="coin-choice">
-
-            <button
-                id="headsBtn"
-                onclick="selectCoinSide('앞면')"
-            >
-                앞면
-            </button>
-
-            <button
-                id="tailsBtn"
-                onclick="selectCoinSide('뒷면')"
-            >
-                뒷면
-            </button>
-
-        </div>
-
-
-        <div class="coin-stage">
-
-            <div
-                class="coin"
-                id="coin"
-            >
-
-                <!-- 앞면 -->
-                <div class="coin-face coin-front">
-
-                    <div class="coin-symbol">
-                        앞
-                    </div>
-
-                    <div class="coin-text">
-                        HEADS
-                    </div>
-
-                </div>
-
-
-                <!-- 뒷면 -->
-                <div class="coin-face coin-back">
-
-                    <div class="coin-symbol">
-                        뒤
-                    </div>
-
-                    <div class="coin-text">
-                        TAILS
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="primary"
-            id="coinFlipBtn"
-            onclick="flipCoin()"
-        >
-            동전 던지기
-        </button>
-
-
-        <div
-            class="coin-result"
-            id="coinResult"
-            style="margin-top:30px;"
-        >
-
-            <div class="coin-result-main">
-                면을 선택해주세요
-            </div>
-
-            <div class="coin-result-sub">
-                앞면 또는 뒷면을 선택한 후 동전을 던지세요.
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
 <!-- ================= MEMO ================= -->
 
 <section id="memo" class="page">
@@ -1465,6 +1394,8 @@ button.secondary:hover{
 
     <div class="memo-layout">
 
+        <!-- 메모 목록 -->
+
         <div class="memo-sidebar">
 
             <button
@@ -1481,6 +1412,8 @@ button.secondary:hover{
 
         </div>
 
+
+        <!-- 메모 편집 -->
 
         <div class="memo-editor">
 
@@ -1515,7 +1448,87 @@ button.secondary:hover{
                 id="memoSaveStatus"
                 class="memo-save-status"
             >
-                메모를 선택하거나 새로 만들어주세요.
+                저장됨
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section id="settings" class="page">
+
+    <div class="header">
+
+        <h1>설정</h1>
+
+        <p>
+            TOOLPICK의 화면 설정을 변경합니다.
+        </p>
+
+    </div>
+
+
+    <div class="panel settings-panel">
+
+        <div class="setting-section">
+
+            <div class="setting-title">
+                화면 테마
+            </div>
+
+            <div class="setting-description">
+                원하는 배경 모드를 선택하세요.
+            </div>
+
+
+            <div class="theme-options">
+
+                <button
+                    class="theme-option"
+                    id="darkTheme"
+                    onclick="setTheme('dark')"
+                >
+
+                    <div class="theme-option-icon">
+                        🌙
+                    </div>
+
+                    <div class="theme-option-name">
+                        다크 모드
+                    </div>
+
+                    <div class="theme-option-desc">
+                        어두운 배경을 사용합니다.
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="theme-option"
+                    id="lightTheme"
+                    onclick="setTheme('light')"
+                >
+
+                    <div class="theme-option-icon">
+                        ☀️
+                    </div>
+
+                    <div class="theme-option-name">
+                        라이트 모드
+                    </div>
+
+                    <div class="theme-option-desc">
+                        밝은 배경을 사용합니다.
+                    </div>
+
+                </button>
+
             </div>
 
         </div>
@@ -1527,7 +1540,7 @@ button.secondary:hover{
 </main>
 
 
-<!-- ================= MEMO MODAL ================= -->
+<!-- ================= NEW MEMO MODAL ================= -->
 
 <div
     class="modal-bg"
@@ -1583,8 +1596,8 @@ function openPage(id,btn){
 
     document
         .querySelectorAll(".page")
-        .forEach(page=>{
-            page.classList.remove("active");
+        .forEach(p=>{
+            p.classList.remove("active");
         });
 
     const target=
@@ -1596,8 +1609,8 @@ function openPage(id,btn){
 
     document
         .querySelectorAll(".side-btn")
-        .forEach(button=>{
-            button.classList.remove("active");
+        .forEach(b=>{
+            b.classList.remove("active");
         });
 
     if(btn){
@@ -1656,11 +1669,10 @@ function getAudio(){
     }
 
     return audioContext;
-
 }
 
 
-/* 당첨 소리 */
+/* 당첨 효과음만 */
 
 function playWin(){
 
@@ -1708,10 +1720,16 @@ function playWin(){
         );
 
         osc.connect(gain);
-        gain.connect(ctx.destination);
+
+        gain.connect(
+            ctx.destination
+        );
 
         osc.start(start);
-        osc.stop(start+.3);
+
+        osc.stop(
+            start+.3
+        );
 
     });
 
@@ -1733,7 +1751,9 @@ function buildRoulette(){
 
     const input=
         document
-            .getElementById("rouletteInput")
+            .getElementById(
+                "rouletteInput"
+            )
             .value;
 
     rouletteItems=
@@ -1743,13 +1763,18 @@ function buildRoulette(){
             .filter(Boolean);
 
     const wheel=
-        document.getElementById("wheel");
+        document.getElementById(
+            "wheel"
+        );
 
     wheel.innerHTML="";
 
-    if(rouletteItems.length===0){
+    if(
+        rouletteItems.length===0
+    ){
 
-        wheel.style.background="#202329";
+        wheel.style.background=
+            "#202329";
 
         return;
 
@@ -1778,23 +1803,30 @@ function buildRoulette(){
         i++
     ){
 
-        const start=i*angle;
-        const end=(i+1)*angle;
+        const start=
+            i*angle;
+
+        const end=
+            (i+1)*angle;
 
         gradient.push(
             `${colors[i%colors.length]} ${start}deg ${end}deg`
         );
 
         const label=
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        label.className="wheel-label";
+        label.className=
+            "wheel-label";
 
         label.innerText=
             rouletteItems[i];
 
         const middle=
-            start+angle/2;
+            start+
+            angle/2;
 
         label.style.transform=
             `translate(-50%,-50%)
@@ -1802,7 +1834,9 @@ function buildRoulette(){
              translateY(-105px)
              rotate(${-middle}deg)`;
 
-        wheel.appendChild(label);
+        wheel.appendChild(
+            label
+        );
 
     }
 
@@ -1816,7 +1850,9 @@ function buildRoulette(){
 
 
 document
-    .getElementById("rouletteInput")
+    .getElementById(
+        "rouletteInput"
+    )
     .addEventListener(
         "input",
         buildRoulette
@@ -1830,10 +1866,14 @@ function spinRoulette(){
 
     buildRoulette();
 
-    if(rouletteItems.length<2){
+    if(
+        rouletteItems.length<2
+    ){
 
         document
-            .getElementById("rouletteResult")
+            .getElementById(
+                "rouletteResult"
+            )
             .innerText=
                 "참가자를 2명 이상 입력해주세요.";
 
@@ -1846,7 +1886,9 @@ function spinRoulette(){
     rouletteSpinning=true;
 
     const wheel=
-        document.getElementById("wheel");
+        document.getElementById(
+            "wheel"
+        );
 
     const count=
         rouletteItems.length;
@@ -1874,7 +1916,9 @@ function spinRoulette(){
         `rotate(${rouletteRotation}deg)`;
 
     document
-        .getElementById("rouletteResult")
+        .getElementById(
+            "rouletteResult"
+        )
         .innerText=
             "룰렛이 돌아가는 중...";
 
@@ -1883,9 +1927,11 @@ function spinRoulette(){
         rouletteSpinning=false;
 
         document
-            .getElementById("rouletteResult")
+            .getElementById(
+                "rouletteResult"
+            )
             .innerHTML=
-                `🎉 <strong>${escapeHtml(rouletteItems[winner])}</strong> 당첨!`;
+                `🎉 <strong>${rouletteItems[winner]}</strong> 당첨!`;
 
         playWin();
 
@@ -1897,22 +1943,29 @@ function spinRoulette(){
 function clearRoulette(){
 
     document
-        .getElementById("rouletteInput")
+        .getElementById(
+            "rouletteInput"
+        )
         .value="";
 
     document
-        .getElementById("rouletteResult")
+        .getElementById(
+            "rouletteResult"
+        )
         .innerText=
             "결과가 여기에 표시됩니다.";
 
     rouletteItems=[];
 
     const wheel=
-        document.getElementById("wheel");
+        document.getElementById(
+            "wheel"
+        );
 
     wheel.innerHTML="";
 
-    wheel.style.background="#202329";
+    wheel.style.background=
+        "#202329";
 
 }
 
@@ -1923,7 +1976,9 @@ function clearRoulette(){
 
 function shuffle(array){
 
-    const arr=[...array];
+    const arr=[
+        ...array
+    ];
 
     for(
         let i=arr.length-1;
@@ -1933,11 +1988,17 @@ function shuffle(array){
 
         const j=
             Math.floor(
-                Math.random()*(i+1)
+                Math.random()*
+                (i+1)
             );
 
-        [arr[i],arr[j]]=
-        [arr[j],arr[i]];
+        [
+            arr[i],
+            arr[j]
+        ]=[
+            arr[j],
+            arr[i]
+        ];
 
     }
 
@@ -1950,7 +2011,9 @@ function makeTeams(){
 
     const people=
         document
-            .getElementById("teamInput")
+            .getElementById(
+                "teamInput"
+            )
             .value
             .split("\n")
             .map(x=>x.trim())
@@ -1959,14 +2022,20 @@ function makeTeams(){
     const count=
         parseInt(
             document
-                .getElementById("teamCount")
+                .getElementById(
+                    "teamCount"
+                )
                 .value
         );
 
-    if(people.length<count){
+    if(
+        people.length<count
+    ){
 
         document
-            .getElementById("teamResult")
+            .getElementById(
+                "teamResult"
+            )
             .innerHTML=
                 `
                 <div class="panel">
@@ -1996,7 +2065,9 @@ function makeTeams(){
     shuffled.forEach(
         (person,i)=>{
 
-            teams[i%count].push(person);
+            teams[
+                i%count
+            ].push(person);
 
         }
     );
@@ -2012,23 +2083,31 @@ function makeTeams(){
         (team,i)=>{
 
             const card=
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            card.className="team-card";
+            card.className=
+                "team-card";
 
             let html=
                 `<h3>TEAM ${i+1}</h3>`;
 
-            team.forEach(person=>{
+            team.forEach(
+                person=>{
 
-                html+=
-                    `<div class="team-member">${escapeHtml(person)}</div>`;
+                    html+=
+                        `<div class="team-member">${person}</div>`;
 
-            });
+                }
+            );
 
-            card.innerHTML=html;
+            card.innerHTML=
+                html;
 
-            result.appendChild(card);
+            result.appendChild(
+                card
+            );
 
         }
     );
@@ -2066,19 +2145,25 @@ function updateTimerDisplay(){
             .padStart(2,"0");
 
     document
-        .getElementById("timerDisplay")
+        .getElementById(
+            "timerDisplay"
+        )
         .innerText=
             `${m}:${s}`;
 
     const total=
         parseInt(
             document
-                .getElementById("timerMinutes")
+                .getElementById(
+                    "timerMinutes"
+                )
                 .value||5
         )*60+
         parseInt(
             document
-                .getElementById("timerSeconds")
+                .getElementById(
+                    "timerSeconds"
+                )
                 .value||0
         );
 
@@ -2096,7 +2181,9 @@ function updateTimerDisplay(){
         0;
 
     document
-        .getElementById("timerCircle")
+        .getElementById(
+            "timerCircle"
+        )
         .style.setProperty(
             "--progress",
             `${progress*360}deg`
@@ -2111,33 +2198,47 @@ function startTimer(){
 
         timerRunning=false;
 
-        clearInterval(timerInterval);
+        clearInterval(
+            timerInterval
+        );
 
         document
-            .getElementById("timerStart")
-            .innerText="계속";
+            .getElementById(
+                "timerStart"
+            )
+            .innerText=
+                "계속";
 
         document
-            .getElementById("timerStatus")
-            .innerText="일시정지";
+            .getElementById(
+                "timerStatus"
+            )
+            .innerText=
+                "일시정지";
 
         return;
 
     }
 
-    if(timerSeconds<=0){
+    if(
+        timerSeconds<=0
+    ){
 
         const minutes=
             parseInt(
                 document
-                    .getElementById("timerMinutes")
+                    .getElementById(
+                        "timerMinutes"
+                    )
                     .value||0
             );
 
         const seconds=
             parseInt(
                 document
-                    .getElementById("timerSeconds")
+                    .getElementById(
+                        "timerSeconds"
+                    )
                     .value||0
             );
 
@@ -2147,20 +2248,30 @@ function startTimer(){
 
     }
 
-    if(timerSeconds<=0)
+    if(
+        timerSeconds<=0
+    )
         return;
 
     timerRunning=true;
 
     document
-        .getElementById("timerStart")
-        .innerText="일시정지";
+        .getElementById(
+            "timerStart"
+        )
+        .innerText=
+            "일시정지";
 
     document
-        .getElementById("timerStatus")
-        .innerText="진행 중";
+        .getElementById(
+            "timerStatus"
+        )
+        .innerText=
+            "진행 중";
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
     timerInterval=
         setInterval(()=>{
@@ -2169,21 +2280,29 @@ function startTimer(){
 
             updateTimerDisplay();
 
-            if(timerSeconds<=0){
+            if(
+                timerSeconds<=0
+            ){
 
-                clearInterval(timerInterval);
+                clearInterval(
+                    timerInterval
+                );
 
                 timerRunning=false;
 
                 document
-                    .getElementById("timerStart")
-                    .innerText="시작";
+                    .getElementById(
+                        "timerStart"
+                    )
+                    .innerText=
+                        "시작";
 
                 document
-                    .getElementById("timerStatus")
-                    .innerText="완료";
-
-                playWin();
+                    .getElementById(
+                        "timerStatus"
+                    )
+                    .innerText=
+                        "완료";
 
             }
 
@@ -2194,21 +2313,27 @@ function startTimer(){
 
 function resetTimer(){
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
     timerRunning=false;
 
     const minutes=
         parseInt(
             document
-                .getElementById("timerMinutes")
+                .getElementById(
+                    "timerMinutes"
+                )
                 .value||5
         );
 
     const seconds=
         parseInt(
             document
-                .getElementById("timerSeconds")
+                .getElementById(
+                    "timerSeconds"
+                )
                 .value||0
         );
 
@@ -2220,12 +2345,18 @@ function resetTimer(){
         );
 
     document
-        .getElementById("timerStart")
-        .innerText="시작";
+        .getElementById(
+            "timerStart"
+        )
+        .innerText=
+            "시작";
 
     document
-        .getElementById("timerStatus")
-        .innerText="준비됨";
+        .getElementById(
+            "timerStatus"
+        )
+        .innerText=
+            "준비됨";
 
     updateTimerDisplay();
 
@@ -2233,7 +2364,9 @@ function resetTimer(){
 
 
 document
-    .getElementById("timerMinutes")
+    .getElementById(
+        "timerMinutes"
+    )
     .addEventListener(
         "change",
         ()=>{
@@ -2243,7 +2376,9 @@ document
     );
 
 document
-    .getElementById("timerSeconds")
+    .getElementById(
+        "timerSeconds"
+    )
     .addEventListener(
         "change",
         ()=>{
@@ -2251,199 +2386,6 @@ document
                 resetTimer();
         }
     );
-
-
-/* =====================================================
-   COIN FLIP
-===================================================== */
-
-let selectedCoinSide=null;
-
-let coinFlipping=false;
-
-
-function selectCoinSide(side){
-
-    if(coinFlipping)
-        return;
-
-    selectedCoinSide=side;
-
-    document
-        .getElementById("headsBtn")
-        .classList.toggle(
-            "selected",
-            side==="앞면"
-        );
-
-    document
-        .getElementById("tailsBtn")
-        .classList.toggle(
-            "selected",
-            side==="뒷면"
-        );
-
-    document
-        .getElementById("coinResult")
-        .innerHTML=
-            `
-            <div class="coin-result-main">
-                ${side} 선택
-            </div>
-
-            <div class="coin-result-sub">
-                이제 동전을 던져보세요.
-            </div>
-            `;
-
-}
-
-
-function flipCoin(){
-
-    if(coinFlipping)
-        return;
-
-    if(!selectedCoinSide){
-
-        document
-            .getElementById("coinResult")
-            .innerHTML=
-                `
-                <div class="coin-result-main">
-                    먼저 면을 선택해주세요
-                </div>
-
-                <div class="coin-result-sub">
-                    앞면 또는 뒷면을 선택하세요.
-                </div>
-                `;
-
-        return;
-
-    }
-
-    coinFlipping=true;
-
-    const coin=
-        document.getElementById("coin");
-
-    const result=
-        Math.random()<0.5
-        ?
-        "앞면"
-        :
-        "뒷면";
-
-    const resultIsFront=
-        result==="앞면";
-
-    /*
-       앞면 = 0도
-       뒷면 = 180도
-
-       여러 바퀴 회전 후 결과 면으로 정지
-    */
-
-    const extraTurns=
-        5*360;
-
-    const finalRotation=
-        extraTurns+
-        (
-            resultIsFront
-            ?
-            0
-            :
-            180
-        );
-
-    coin.style.transition=
-        "transform 2.8s cubic-bezier(.15,.8,.2,1)";
-
-    coin.classList.remove("coin-flip");
-
-    void coin.offsetWidth;
-
-    coin.classList.add("coin-flip");
-
-    coin.style.transform=
-        `rotateY(${finalRotation}deg)`;
-
-    document
-        .getElementById("coinFlipBtn")
-        .disabled=true;
-
-    document
-        .getElementById("coinFlipBtn")
-        .style.opacity=".5";
-
-    document
-        .getElementById("coinResult")
-        .innerHTML=
-            `
-            <div class="coin-result-main">
-                동전을 던지는 중...
-            </div>
-
-            <div class="coin-result-sub">
-                잠시만 기다려주세요.
-            </div>
-            `;
-
-    setTimeout(()=>{
-
-        coinFlipping=false;
-
-        document
-            .getElementById("coinFlipBtn")
-            .disabled=false;
-
-        document
-            .getElementById("coinFlipBtn")
-            .style.opacity="1";
-
-        const win=
-            result===
-            selectedCoinSide;
-
-        if(win){
-
-            document
-                .getElementById("coinResult")
-                .innerHTML=
-                    `
-                    <div class="coin-result-main">
-                        🎉 승리!
-                    </div>
-
-                    <div class="coin-result-sub">
-                        ${result}이 나왔습니다. 선택한 면과 일치합니다!
-                    </div>
-                    `;
-
-            playWin();
-
-        }else{
-
-            document
-                .getElementById("coinResult")
-                .innerHTML=
-                    `
-                    <div class="coin-result-main">
-                        😢 패배
-                    </div>
-
-                    <div class="coin-result-sub">
-                        ${result}이 나왔습니다. 선택한 면은 ${selectedCoinSide}이었습니다.
-                    </div>
-                    `;
-
-        }
-
-    },2850);
-
-}
 
 
 /* =====================================================
@@ -2454,6 +2396,10 @@ let memos=[];
 
 let currentMemoId=null;
 
+
+/*
+   저장된 메모 불러오기
+*/
 
 function loadMemos(){
 
@@ -2480,6 +2426,10 @@ function loadMemos(){
 }
 
 
+/*
+   메모 저장
+*/
+
 function saveMemos(){
 
     localStorage.setItem(
@@ -2490,20 +2440,32 @@ function saveMemos(){
 }
 
 
+/*
+   새 메모 창 열기
+*/
+
 function openNewMemo(){
 
     document
-        .getElementById("newMemoTitle")
+        .getElementById(
+            "newMemoTitle"
+        )
         .value="";
 
     document
-        .getElementById("memoModal")
-        .classList.add("show");
+        .getElementById(
+            "memoModal"
+        )
+        .classList.add(
+            "show"
+        );
 
     setTimeout(()=>{
 
         document
-            .getElementById("newMemoTitle")
+            .getElementById(
+                "newMemoTitle"
+            )
             .focus();
 
     },50);
@@ -2511,25 +2473,41 @@ function openNewMemo(){
 }
 
 
+/*
+   새 메모 창 닫기
+*/
+
 function closeMemoModal(){
 
     document
-        .getElementById("memoModal")
-        .classList.remove("show");
+        .getElementById(
+            "memoModal"
+        )
+        .classList.remove(
+            "show"
+        );
 
 }
 
+
+/*
+   메모 만들기
+*/
 
 function createMemo(){
 
     let title=
         document
-            .getElementById("newMemoTitle")
+            .getElementById(
+                "newMemoTitle"
+            )
             .value
             .trim();
 
     if(!title){
+
         title="제목 없음";
+
     }
 
     const memo={
@@ -2549,11 +2527,14 @@ function createMemo(){
 
     };
 
-    memos.unshift(memo);
+    memos.unshift(
+        memo
+    );
 
     saveMemos();
 
-    currentMemoId=memo.id;
+    currentMemoId=
+        memo.id;
 
     closeMemoModal();
 
@@ -2563,6 +2544,10 @@ function createMemo(){
 
 }
 
+
+/*
+   메모 목록 표시
+*/
 
 function renderMemoList(){
 
@@ -2587,51 +2572,65 @@ function renderMemoList(){
 
     }
 
-    memos.forEach(memo=>{
+    memos.forEach(
+        memo=>{
 
-        const item=
-            document.createElement("button");
+            const item=
+                document.createElement(
+                    "button"
+                );
 
-        item.className=
-            "memo-item"+
-            (
-                memo.id===currentMemoId
-                ?
-                " active"
-                :
-                ""
+            item.className=
+                "memo-item"+
+                (
+                    memo.id===
+                    currentMemoId
+                    ?
+                    " active"
+                    :
+                    ""
+                );
+
+            const date=
+                new Date(
+                    memo.updated
+                );
+
+            item.innerHTML=
+                `
+                <div class="memo-item-title">
+                    ${escapeHtml(memo.title)}
+                </div>
+
+                <div class="memo-item-date">
+                    ${formatMemoDate(date)}
+                </div>
+                `;
+
+            item.onclick=()=>{
+
+                currentMemoId=
+                    memo.id;
+
+                renderMemoList();
+
+                loadCurrentMemo();
+
+            };
+
+            list.appendChild(
+                item
             );
 
-        const date=
-            new Date(memo.updated);
-
-        item.innerHTML=
-            `
-            <div class="memo-item-title">
-                ${escapeHtml(memo.title)}
-            </div>
-
-            <div class="memo-item-date">
-                ${formatMemoDate(date)}
-            </div>
-            `;
-
-        item.onclick=()=>{
-
-            currentMemoId=memo.id;
-
-            renderMemoList();
-
-            loadCurrentMemo();
-
-        };
-
-        list.appendChild(item);
-
-    });
+        }
+    );
 
 }
 
+
+/*
+   현재 메모 불러오기
+*/
 
 function loadCurrentMemo(){
 
@@ -2653,6 +2652,7 @@ function loadCurrentMemo(){
     if(!currentMemoId){
 
         titleInput.value="";
+
         contentInput.value="";
 
         status.innerText=
@@ -2664,7 +2664,8 @@ function loadCurrentMemo(){
 
     const memo=
         memos.find(
-            m=>m.id===currentMemoId
+            m=>m.id===
+                currentMemoId
         );
 
     if(!memo){
@@ -2677,14 +2678,21 @@ function loadCurrentMemo(){
 
     }
 
-    titleInput.value=memo.title;
+    titleInput.value=
+        memo.title;
 
-    contentInput.value=memo.content;
+    contentInput.value=
+        memo.content;
 
-    status.innerText="저장됨";
+    status.innerText=
+        "저장됨";
 
 }
 
+
+/*
+   현재 메모 자동 저장
+*/
 
 function saveCurrentMemo(){
 
@@ -2693,7 +2701,8 @@ function saveCurrentMemo(){
 
     const memo=
         memos.find(
-            m=>m.id===currentMemoId
+            m=>m.id===
+                currentMemoId
         );
 
     if(!memo)
@@ -2701,17 +2710,23 @@ function saveCurrentMemo(){
 
     memo.title=
         document
-            .getElementById("memoTitle")
+            .getElementById(
+                "memoTitle"
+            )
             .value
             .trim();
 
     memo.content=
         document
-            .getElementById("memoContent")
+            .getElementById(
+                "memoContent"
+            )
             .value;
 
     if(!memo.title){
+
         memo.title="제목 없음";
+
     }
 
     memo.updated=
@@ -2720,13 +2735,20 @@ function saveCurrentMemo(){
     saveMemos();
 
     document
-        .getElementById("memoSaveStatus")
-        .innerText="자동 저장됨";
+        .getElementById(
+            "memoSaveStatus"
+        )
+        .innerText=
+            "자동 저장됨";
 
     renderMemoList();
 
 }
 
+
+/*
+   현재 메모 삭제
+*/
 
 function deleteCurrentMemo(){
 
@@ -2735,7 +2757,8 @@ function deleteCurrentMemo(){
 
     const index=
         memos.findIndex(
-            m=>m.id===currentMemoId
+            m=>m.id===
+                currentMemoId
         );
 
     if(index===-1)
@@ -2749,7 +2772,10 @@ function deleteCurrentMemo(){
     if(!confirmed)
         return;
 
-    memos.splice(index,1);
+    memos.splice(
+        index,
+        1
+    );
 
     saveMemos();
 
@@ -2767,9 +2793,14 @@ function deleteCurrentMemo(){
 }
 
 
+/*
+   날짜 표시
+*/
+
 function formatMemoDate(date){
 
-    const y=date.getFullYear();
+    const y=
+        date.getFullYear();
 
     const m=
         String(
@@ -2796,36 +2827,159 @@ function formatMemoDate(date){
 }
 
 
+/*
+   HTML 문자 안전 처리
+*/
+
+function escapeHtml(text){
+
+    return text
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/*
+   Enter를 눌러도 메모 생성
+*/
+
 document
-    .getElementById("newMemoTitle")
+    .getElementById(
+        "newMemoTitle"
+    )
     .addEventListener(
         "keydown",
         e=>{
 
-            if(e.key==="Enter"){
+            if(
+                e.key==="Enter"
+            ){
+
                 createMemo();
+
             }
 
-            if(e.key==="Escape"){
+            if(
+                e.key==="Escape"
+            ){
+
                 closeMemoModal();
+
             }
 
         }
     );
 
 
+/*
+   메모 데이터 초기화
+*/
+
+loadMemos();
+
+
 /* =====================================================
-   HTML ESCAPE
+   THEME
 ===================================================== */
 
-function escapeHtml(text){
+function setTheme(theme){
 
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    if(theme==="light"){
+
+        document.body.classList.add(
+            "light"
+        );
+
+        localStorage.setItem(
+            "toolpick_theme",
+            "light"
+        );
+
+    }else{
+
+        document.body.classList.remove(
+            "light"
+        );
+
+        localStorage.setItem(
+            "toolpick_theme",
+            "dark"
+        );
+
+    }
+
+    updateThemeButtons();
+
+}
+
+
+/*
+   테마 버튼 상태
+*/
+
+function updateThemeButtons(){
+
+    const theme=
+        localStorage.getItem(
+            "toolpick_theme"
+        )||
+        "dark";
+
+    const dark=
+        document.getElementById(
+            "darkTheme"
+        );
+
+    const light=
+        document.getElementById(
+            "lightTheme"
+        );
+
+    dark.classList.toggle(
+        "active",
+        theme==="dark"
+    );
+
+    light.classList.toggle(
+        "active",
+        theme==="light"
+    );
+
+}
+
+
+/*
+   저장된 테마 적용
+*/
+
+function loadTheme(){
+
+    const theme=
+        localStorage.getItem(
+            "toolpick_theme"
+        )||
+        "dark";
+
+    setTheme(theme);
 
 }
 
@@ -2834,13 +2988,15 @@ function escapeHtml(text){
    INITIALIZE
 ===================================================== */
 
-loadMemos();
-
 buildRoulette();
 
 updateTimerDisplay();
 
 renderMemoList();
+
+updateThemeButtons();
+
+loadTheme();
 
 </script>
 
